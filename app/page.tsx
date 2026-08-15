@@ -15,6 +15,7 @@ type Plan = {
   tone: "red" | "orange" | "lime" | "green";
   preference: string;
   facts: string[];
+  supportNote?: string;
   verdict: string;
 };
 
@@ -25,19 +26,18 @@ const plans: Plan[] = [
     date: "August 2026",
     label: "City’s current plan",
     title: "Paint and signs, but no meaningful redesign",
-    summary:
-      "The City’s plan makes small changes while keeping the same basic four-lane street.",
+    summary: "The City’s plan makes small changes while keeping the same basic four-lane street.",
     image: "/plans/august-2026.webp",
     pdf: "/plans/august-2026.pdf",
     alt: "August 2026 City of Boston Hyde Park Avenue pavement marking and signage plan near Weld Hill, Woodlawn, and Tower Streets",
     tone: "red",
     preference: "Least protective",
     facts: [
-      "Keeps four through lanes",
-      "Adds markings, stop bars, and limited daylighting",
-      "Adds no new crossing or pedestrian island at Weld Hill Street",
+      "Four traffic lanes remain",
+      "New paint, stop bars, and limited daylighting",
+      "No new crossing or pedestrian island at Weld Hill Street",
     ],
-    verdict: "It does not address the street’s basic problems: dangerous driving, long crossings, and no safe route for cyclists.",
+    verdict: "It leaves the basic problems in place: dangerous driving, long crossings, and no safe route for cyclists.",
   },
   {
     id: "four-lanes",
@@ -53,9 +53,9 @@ const plans: Plan[] = [
     tone: "orange",
     preference: "Some improvement",
     facts: [
-      "Keeps four through lanes",
-      "Adds concrete curb extensions and a pedestrian island",
-      "Shortens the crossing at Ukraine Way",
+      "Four traffic lanes remain",
+      "Concrete curb extensions and a pedestrian island",
+      "A shorter crossing at Ukraine Way",
     ],
     verdict: "Better than the current plan, but it leaves the street wide and does little for cyclists.",
   },
@@ -73,10 +73,11 @@ const plans: Plan[] = [
     tone: "lime",
     preference: "Supported in 2025",
     facts: [
-      "Reduces the street to three lanes",
-      "Adds concrete curb extensions and pedestrian islands",
-      "Adds a new Weld Hill crossing and room for bike lanes",
+      "Three lanes to reduce weaving and speeding",
+      "Concrete curb extensions and pedestrian islands",
+      "A new Weld Hill crossing and room for bike lanes",
     ],
+    supportNote: "Supported by 700 residents and many local businesses when it was presented in May 2025.",
     verdict: "A practical resurfacing plan that reduces conflicts and adds lasting protection for people crossing the street.",
   },
   {
@@ -213,20 +214,13 @@ export default function Home() {
           </div>
 
           <div className="plan-details">
-            <div className="plan-meta">
-              <span className={`status status-${activePlan.tone}`}>{activePlan.label}</span>
-              <span>{activePlan.date}</span>
-            </div>
+            <p className="plan-meta"><span>{activePlan.date}</span><span aria-hidden="true">·</span><span>{activePlan.label}</span></p>
             <h3>{activePlan.title}</h3>
-            <p className="plan-summary">{activePlan.summary}</p>
-
-            <div className="quick-read">
-              <h4>At a glance</h4>
-              <ul className="quick-facts">
-                {activePlan.facts.map((item) => <li key={item}>{item}</li>)}
-              </ul>
-            </div>
-            <p className={`plan-verdict verdict-${activePlan.tone}`}>{activePlan.verdict}</p>
+            {activePlan.supportNote && <p className="plan-support">{activePlan.supportNote}</p>}
+            <ul className="plan-points">
+              {activePlan.facts.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+            <p className={`plan-verdict verdict-${activePlan.tone}`}><strong>Bottom line</strong>{activePlan.verdict}</p>
           </div>
         </article>
 
@@ -247,7 +241,7 @@ export default function Home() {
             <li>Crossings that feel too long, exposed, or poorly placed</li>
             <li>The lack of a safe way for cyclists to leave Forest Hills</li>
             <li>Drivers running red lights at Ukraine Way</li>
-            <li>A moment when you or someone you know felt unsafe here</li>
+            <li>A time you or someone you know had a close call here</li>
           </ul>
         </div>
 
@@ -278,7 +272,7 @@ export default function Home() {
             id="letter"
             rows={14}
             value={letter}
-            placeholder="Start with your own experience. What happens when you use Hyde Park Avenue? What feels unsafe? What would a safer design change for you, your family, or your neighbors?"
+            placeholder="Start with your own experience. What happens when you use Hyde Park Avenue? Have you had a close call? What would a safer design change for you, your family, or your neighbors?"
             onChange={(event) => setLetter(event.target.value)}
           />
 
