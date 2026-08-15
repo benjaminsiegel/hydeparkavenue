@@ -30,8 +30,8 @@ The site should feel like a handsome neighborhood campaign poster expanded into 
 ## Page structure
 
 1. Hero: local aerial photograph, one-sentence problem, two routes forward - compare or act. No separate navigation bar.
-2. Plan comparison: the stakes and comparison introduction form one compact section. August 2026 is selected by default, with one-click access to both May 2025 alternatives and the August 2020 redesign.
-3. Action: an editable letter addressed to the current Chief of Streets, with an email-app handoff and a copy option. The page ends here without a repeated closing pitch or campaign footer.
+2. Plan comparison: the stakes and comparison introduction form one compact section. The four tabs run from red to green, ordering the plans from least protective to most ambitious. Each plan is reduced to three facts and one plain-language conclusion.
+3. Action: residents get prompts for writing their own story rather than a form letter. The email handoff pre-addresses City leadership, the District 6 councilor, and the coalition. The page ends here without a repeated closing pitch or campaign footer.
 
 ## Interaction and accessibility
 
