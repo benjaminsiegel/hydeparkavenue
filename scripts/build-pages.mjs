@@ -7,9 +7,9 @@ const projectPath = "/hydeparkavenue";
 const publicUrl = `https://benjaminsiegel.github.io${projectPath}`;
 const previewUrl = "http://127.0.0.1:4173/";
 
-const server = spawn("npm", ["run", "start"], {
+const server = spawn(process.execPath, ["node_modules/vinext/dist/cli.js", "start"], {
   cwd: new URL("../", import.meta.url),
-  env: { ...process.env, PORT: "4173" },
+  env: { ...process.env, PORT: "4173", WRANGLER_LOG_PATH: ".wrangler/wrangler.log" },
   stdio: ["ignore", "pipe", "pipe"],
 });
 
@@ -52,6 +52,18 @@ async function rewriteBuiltAssets(directory) {
   }));
 }
 
+async function stopServer() {
+  if (server.exitCode !== null) return;
+  await new Promise((resolve) => {
+    const timeout = setTimeout(resolve, 2000);
+    server.once("exit", () => {
+      clearTimeout(timeout);
+      resolve();
+    });
+    server.kill("SIGTERM");
+  });
+}
+
 try {
   const renderedPage = addPagesBasePath(await getRenderedPage());
   await rewriteBuiltAssets(outputDirectory);
@@ -59,5 +71,5 @@ try {
   await writeFile(new URL("404.html", outputDirectory), renderedPage);
   await writeFile(new URL(".nojekyll", outputDirectory), "");
 } finally {
-  server.kill("SIGTERM");
+  await stopServer();
 }
