@@ -170,18 +170,6 @@ export default function Home() {
 
   return (
     <main>
-      <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="Hyde Park Avenue Action home">
-          <span className="wordmark-mark" aria-hidden="true">HPA</span>
-          <span>Hyde Park Avenue Action</span>
-        </a>
-        <nav className="desktop-nav" aria-label="Main navigation">
-          <a href="#plans">Compare the plans</a>
-          <a href="#write">Take action</a>
-        </nav>
-        <a className="header-action" href="#write">Write the City</a>
-      </header>
-
       <section className="hero" id="top">
         <img
           className="hero-image"
@@ -206,24 +194,16 @@ export default function Home() {
         <p className="photo-credit">Photo: City of Boston</p>
       </section>
 
-      <section className="stakes" aria-label="Why this moment matters">
-        <p className="stakes-label">The decision</p>
-        <p className="stakes-copy">
-          Boston can use resurfacing to build lasting safety improvements—or
-          lock in another inadequate design for years.
-        </p>
-        <a href="#plans">Compare all four plans <span aria-hidden="true">↓</span></a>
-      </section>
-
       <section className="plans-section" id="plans">
         <div className="section-heading">
           <div>
-            <p className="section-kicker">Four plans. One street.</p>
-            <h2>See what the new plan leaves behind.</h2>
+            <p className="section-kicker">The decision</p>
+            <h2>The new plan leaves real safety improvements behind.</h2>
           </div>
           <p>
-            Select a plan to compare what it changes—and which safety features
-            disappeared before resurfacing.
+            Boston can use resurfacing to build lasting safety improvements—or
+            lock in another inadequate design for years. Compare the current
+            plan with three earlier alternatives.
           </p>
         </div>
 
@@ -282,13 +262,6 @@ export default function Home() {
           </div>
         </article>
 
-        <div className="bottom-line">
-          <p className="section-kicker">The bottom line</p>
-          <blockquote>
-            Earlier plans treated resurfacing as an opportunity to redesign the
-            street. The new plan mostly treats it as an opportunity to repaint it.
-          </blockquote>
-        </div>
       </section>
 
       <section className="action-section" id="write">
@@ -299,11 +272,6 @@ export default function Home() {
             Send an editable message to Nicholas Gove, Boston’s Interim Chief of
             Streets. Personalize it with your experience on Hyde Park Avenue.
           </p>
-          <div className="action-points" aria-label="How the action works">
-            <span><b>1</b> Edit the letter</span>
-            <span><b>2</b> Open it in your email</span>
-            <span><b>3</b> Review and send</span>
-          </div>
         </div>
 
         <form className="letter-card" onSubmit={(event) => event.preventDefault()}>
@@ -328,22 +296,6 @@ export default function Home() {
           <p className="privacy-note">This opens your email app. Nothing is sent until you review and send it yourself.</p>
         </form>
       </section>
-
-      <section className="resident-close">
-        <p className="section-kicker">A street is a public promise</p>
-        <h2>Resurfacing lasts for years. The safety decision should, too.</h2>
-        <a className="button button-dark" href="#write">Write the City now</a>
-      </section>
-
-      <footer>
-        <p><strong>Hyde Park Avenue Action</strong><br />Built by residents asking Boston for a safer street.</p>
-        <div className="footer-links">
-          <a href="https://www.boston.gov/departments/transportation/project/hyde-park-avenue-multimodal-corridor" target="_blank" rel="noreferrer">City project page ↗</a>
-          <a href="#plans">Plan sources</a>
-          <a href="#write">Take action</a>
-        </div>
-        <p className="footer-note">Plan descriptions summarize the attached City drawings. This prototype is an independent resident advocacy project, not a City of Boston website.</p>
-      </footer>
 
       <a className="floating-action" href="#write">Write the City <span aria-hidden="true">→</span></a>
 

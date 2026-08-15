@@ -17,7 +17,7 @@ People who live, walk, bike, ride the bus, drive, shop, or attend school near Hy
 
 ## Experience principles
 
-- Action before organization: the problem, comparison, and email action come before background material.
+- Action before organization: the page is only the problem, comparison, and email action.
 - Understandable at a glance: use plain-language labels, a four-plan switcher, and short feature lists.
 - Neighbor-led, not agency-branded: confident editorial typography, real local imagery, direct language, and visible independence from the City.
 - Urgent but credible: make the stakes clear without overstating what the source drawings prove.
@@ -29,10 +29,9 @@ The site should feel like a handsome neighborhood campaign poster expanded into 
 
 ## Page structure
 
-1. Hero: local aerial photograph, one-sentence problem, two routes forward - compare or act.
-2. Plan comparison: August 2026 selected by default, with one-click access to both May 2025 alternatives and the August 2020 redesign. Each view shows the source image, what it includes, and what was lost or limited.
-3. Action: an editable letter addressed to the current Chief of Streets, with an email-app handoff and a copy option.
-4. Sources and independence note.
+1. Hero: local aerial photograph, one-sentence problem, two routes forward - compare or act. No separate navigation bar.
+2. Plan comparison: the stakes and comparison introduction form one compact section. August 2026 is selected by default, with one-click access to both May 2025 alternatives and the August 2020 redesign.
+3. Action: an editable letter addressed to the current Chief of Streets, with an email-app handoff and a copy option. The page ends here without a repeated closing pitch or campaign footer.
 
 ## Interaction and accessibility
 
