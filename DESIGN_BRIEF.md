@@ -36,7 +36,7 @@ The site should feel like a handsome neighborhood campaign poster expanded into 
 ## Interaction and accessibility
 
 - Plan choices behave as accessible tabs and support arrow-key navigation.
-- Plan drawings open in a large, dismissible view and remain available as original PDFs.
+- Plan drawings open in a large, dismissible view without a separate download step.
 - The persistent action button becomes a full-width mobile control.
 - Strong contrast, large touch targets, visible keyboard focus, semantic labels, and reduced-motion support are required.
 

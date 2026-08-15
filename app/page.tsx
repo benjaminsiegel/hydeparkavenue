@@ -8,9 +8,7 @@ type Plan = {
   date: string;
   label: string;
   title: string;
-  summary: string;
   image: string;
-  pdf: string;
   alt: string;
   tone: "red" | "orange" | "lime" | "green";
   preference: string;
@@ -25,17 +23,15 @@ const plans: Plan[] = [
     tab: "New plan",
     date: "August 2026",
     label: "City’s current plan",
-    title: "Paint and signs, but no meaningful redesign",
-    summary: "The City’s plan makes small changes while keeping the same basic four-lane street.",
+    title: "Paint, signs, better sight lines for cars",
     image: "/plans/august-2026.webp",
-    pdf: "/plans/august-2026.pdf",
     alt: "August 2026 City of Boston Hyde Park Avenue pavement marking and signage plan near Weld Hill, Woodlawn, and Tower Streets",
     tone: "red",
     preference: "Least protective",
     facts: [
       "Four traffic lanes remain",
       "New paint, stop bars, and limited daylighting",
-      "No new crossing or pedestrian island at Weld Hill Street",
+      "No new crossing or pedestrian island",
     ],
     verdict: "It leaves the basic problems in place: dangerous driving, long crossings, and no safe route for cyclists.",
   },
@@ -45,10 +41,7 @@ const plans: Plan[] = [
     date: "May 2025 · Alternative 1",
     label: "Earlier alternative",
     title: "Still four lanes, with some physical improvements",
-    summary:
-      "This option kept the wide roadway but added concrete changes to make some crossings shorter.",
     image: "/plans/may-2025-alt1.webp",
-    pdf: "/plans/may-2025-alt1.pdf",
     alt: "May 2025 Alternative 1 showing four lanes, concrete curb extensions, daylighting, a pedestrian island, and a shortened crossing",
     tone: "orange",
     preference: "Some improvement",
@@ -65,10 +58,7 @@ const plans: Plan[] = [
     date: "May 2025 · Alternative 2",
     label: "Resident-supported plan",
     title: "Three lanes and permanent pedestrian protection",
-    summary:
-      "This is the 2025 plan we supported because it changes how the street works, not just how it is painted.",
     image: "/plans/may-2025-alt2.webp",
-    pdf: "/plans/may-2025-alt2.pdf",
     alt: "May 2025 Alternative 2 showing three lanes, concrete curb extensions, pedestrian islands, and a new Weld Hill Street crosswalk",
     tone: "lime",
     preference: "Supported in 2025",
@@ -86,10 +76,7 @@ const plans: Plan[] = [
     date: "August 2020",
     label: "Unbuilt redesign",
     title: "A larger multimodal redesign around Forest Hills",
-    summary:
-      "The 2020 concept reallocated street space for transit and biking and treated Hyde Park Avenue as part of a connected transportation network.",
     image: "/plans/august-2020.webp",
-    pdf: "/plans/august-2020.pdf",
     alt: "August 2020 Hyde Park Avenue design progress drawing showing bus-bike-only and bike-priority lanes around Forest Hills Station",
     tone: "green",
     preference: "Most ambitious",
@@ -156,7 +143,7 @@ export default function Home() {
         />
         <div className="hero-shade" />
         <div className="hero-copy">
-          <p className="eyebrow">Forest Hills residents are telling the City of Boston</p>
+          <p className="eyebrow">Forest Hills residents are telling Mayor Wu</p>
           <h1>No repaving without safety improvements.</h1>
           <p className="hero-summary">
             The City of Boston is resurfacing Hyde Park Avenue this fall and is
@@ -206,11 +193,8 @@ export default function Home() {
           <div className="plan-visual-column">
             <button className="plan-image-button" type="button" onClick={() => setExpanded(true)} aria-label={`Enlarge ${activePlan.date} plan`}>
               <img src={activePlan.image} alt={activePlan.alt} />
-              <span>Click to enlarge <span aria-hidden="true">↗</span></span>
+              <span>Click to enlarge</span>
             </button>
-            <a className="source-link" href={activePlan.pdf} target="_blank" rel="noreferrer">
-              Open the original plan PDF <span aria-hidden="true">↗</span>
-            </a>
           </div>
 
           <div className="plan-details">
@@ -220,7 +204,7 @@ export default function Home() {
             <ul className="plan-points">
               {activePlan.facts.map((item) => <li key={item}>{item}</li>)}
             </ul>
-            <p className={`plan-verdict verdict-${activePlan.tone}`}><strong>Bottom line</strong>{activePlan.verdict}</p>
+            <p className="plan-verdict">{activePlan.verdict}</p>
           </div>
         </article>
 
