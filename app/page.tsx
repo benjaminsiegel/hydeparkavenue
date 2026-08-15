@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Plan = {
   id: string;
@@ -89,12 +89,31 @@ const plans: Plan[] = [
   },
 ];
 
+const defaultPlan = plans.find((plan) => plan.id === "current") ?? plans[0];
+
 export default function Home() {
-  const [activePlan, setActivePlan] = useState(plans[0]);
+  const [activePlan, setActivePlan] = useState(defaultPlan);
   const [expanded, setExpanded] = useState(false);
   const [subject, setSubject] = useState("Hyde Park Avenue: No repaving without safety improvements");
   const [letter, setLetter] = useState("");
   const [copied, setCopied] = useState(false);
+  const [letterInView, setLetterInView] = useState(false);
+  const letterCardRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    setActivePlan(defaultPlan);
+  }, []);
+
+  useEffect(() => {
+    const letterCard = letterCardRef.current;
+    if (!letterCard) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setLetterInView(entry.isIntersecting),
+      { threshold: 0.05 },
+    );
+    observer.observe(letterCard);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!expanded) return;
@@ -143,7 +162,7 @@ export default function Home() {
         />
         <div className="hero-shade" />
         <div className="hero-copy">
-          <p className="eyebrow">Forest Hills residents are telling Mayor Wu</p>
+          <p className="eyebrow">Forest Hills residents are telling Mayor Wu’s Streets Team</p>
           <h1>No repaving without safety improvements.</h1>
           <p className="hero-summary">
             The City of Boston is resurfacing Hyde Park Avenue this fall and is
@@ -229,7 +248,7 @@ export default function Home() {
           </ul>
         </div>
 
-        <form className="letter-card" onSubmit={(event) => event.preventDefault()}>
+        <form ref={letterCardRef} className="letter-card" onSubmit={(event) => event.preventDefault()}>
           <div className="letter-routing">
             <div className="route-row">
               <span className="route-label">To</span>
@@ -264,11 +283,10 @@ export default function Home() {
             <a className="send-button" href={mailto}>Open draft in my email <span aria-hidden="true">→</span></a>
             <button className="copy-button" type="button" onClick={copyLetter} disabled={!letter.trim()}>{copied ? "Copied" : "Copy message"}</button>
           </div>
-          <p className="privacy-note">This opens your email app. Nothing is sent until you review and send it yourself.</p>
         </form>
       </section>
 
-      <a className="floating-action" href="#write">Write the City <span aria-hidden="true">→</span></a>
+      {!letterInView && <a className="floating-action" href="#write">Write the City <span aria-hidden="true">→</span></a>}
 
       {expanded && (
         <div className="plan-modal" role="dialog" aria-modal="true" aria-label={`${activePlan.date} enlarged plan`} onClick={() => setExpanded(false)}>

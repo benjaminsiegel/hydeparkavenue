@@ -81,7 +81,6 @@ h3 { margin:0; font:800 clamp(2.25rem,3.4vw,3.8rem)/1 Georgia,serif; letter-spac
 .copy-button { border:1px solid var(--ink); background:transparent; color:var(--ink); }
 .copy-button:hover { background:var(--cream); }
 .copy-button:disabled { opacity:.42; cursor:not-allowed; background:transparent; }
-.privacy-note { margin:14px 0 0; color:var(--ink-soft); font-size:12px; line-height:1.45; }
 .floating-action { position:fixed; z-index:10; right:18px; bottom:18px; padding:14px 18px; border-radius:3px; background:var(--red); color:white; font-weight:800; text-decoration:none; box-shadow:0 6px 18px rgba(62,17,14,.2); }
 .floating-action:hover { background:var(--red-dark); }
 .plan-modal { position:fixed; inset:0; z-index:50; display:grid; place-items:center; padding:70px 24px 24px; background:rgba(6,14,11,.94); cursor:zoom-out; }
