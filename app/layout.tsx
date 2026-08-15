@@ -12,21 +12,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const socialImage = "https://benjaminsiegel.github.io/hydeparkavenue/og.png";
+const socialTitle = "Hyde Park Avenue: No repaving without safety improvements";
+const socialDescription = "Compare Boston’s current resurfacing plan with safer alternatives and tell Mayor Wu’s Streets Team to do better.";
+const socialImage = "https://benjaminsiegel.github.io/hydeparkavenue/og-hyde-park-avenue.png";
 
 export const metadata: Metadata = {
-  title: "Hyde Park Avenue Action",
-  description: "See what Boston plans to build on Hyde Park Avenue, compare the safer alternatives, and ask the City to act.",
+  title: socialTitle,
+  description: socialDescription,
   openGraph: {
-    title: "Don’t pave over safety",
-    description: "Compare Boston's Hyde Park Avenue plans and ask the City to build real pedestrian safety improvements.",
-    images: [{ url: socialImage, width: 1200, height: 630, alt: "Don’t pave over safety - Hyde Park Avenue Action" }],
+    title: socialTitle,
+    description: socialDescription,
+    images: [{ url: socialImage, width: 1200, height: 630, alt: socialTitle }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Don’t pave over safety",
-    description: "Compare Boston's Hyde Park Avenue plans and ask the City to build real pedestrian safety improvements.",
+    title: socialTitle,
+    description: socialDescription,
     images: [socialImage],
   },
 };
