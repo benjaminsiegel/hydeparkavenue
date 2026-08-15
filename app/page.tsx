@@ -150,25 +150,23 @@ export default function Home() {
       <section className="hero" id="top">
         <img
           className="hero-image"
-          src="/hyde-park-avenue.jpg"
-          alt="Aerial view of Hyde Park Avenue and the surrounding Forest Hills neighborhood"
+          src="/hyde-park-avenue-forest-hills.webp"
+          alt="Traffic on Hyde Park Avenue at Forest Hills"
         />
         <div className="hero-shade" />
         <div className="hero-copy">
           <p className="eyebrow">Forest Hills residents are telling the City of Boston</p>
-          <h1>Don’t pave over a chance to make Hyde Park Avenue safer.</h1>
+          <h1>No repaving without safety improvements.</h1>
           <p className="hero-summary">
-            The City of Boston is resurfacing Hyde Park Avenue and is committed
-            to a design that doesn’t adequately address pedestrian safety issues
-            residents have documented for years.
-            <strong className="hero-demand">No repaving without safety improvements.</strong>
+            The City of Boston is resurfacing Hyde Park Avenue this fall and is
+            committed to a design that doesn’t adequately address pedestrian
+            safety issues residents have documented for years.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#plans">See the City’s inadequate plan</a>
             <a className="button button-quiet" href="#write">Write the City</a>
           </div>
         </div>
-        <p className="photo-credit">Photo: City of Boston</p>
       </section>
 
       <section className="plans-section" id="plans">
@@ -236,12 +234,13 @@ export default function Home() {
 
       <section className="action-section" id="write">
         <div className="action-intro">
-          <p className="section-kicker light-kicker">Take one minute</p>
-          <h2>Tell the City what this street is really like.</h2>
+          <p className="section-kicker light-kicker">Tell the City</p>
+          <h2>No repaving without safety improvements.</h2>
           <p>
-            A personal story is more powerful than a form letter. Describe what
-            happens when you walk, bike, drive, or take the bus here—and what a
-            safer design would change for you.
+            The City plans to repave Hyde Park Avenue this fall using a design
+            residents have repeatedly said is inadequate. Tell City leaders why
+            that is unacceptable—and what a safer plan would mean for you and
+            your family.
           </p>
           <ul className="writing-prompts">
             <li>Dangerous or aggressive driving you regularly see</li>
@@ -268,10 +267,6 @@ export default function Home() {
             <div className="route-row compact-route">
               <span className="route-label">CC</span>
               <div className="route-list"><span><strong>Ben Weber</strong></span><small>benjamin.weber@boston.gov</small></div>
-            </div>
-            <div className="route-row compact-route">
-              <span className="route-label">BCC</span>
-              <div className="route-list"><span><strong>Boston Better Streets Coalition</strong></span><small>bostonbetterstreets@gmail.com</small></div>
             </div>
           </div>
 

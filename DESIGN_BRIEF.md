@@ -29,9 +29,9 @@ The site should feel like a handsome neighborhood campaign poster expanded into 
 
 ## Page structure
 
-1. Hero: local aerial photograph, one-sentence problem, two routes forward - compare or act. No separate navigation bar.
+1. Hero: a resident photograph of Hyde Park Avenue at Forest Hills, one-sentence problem, two routes forward - compare or act. No separate navigation bar.
 2. Plan comparison: the stakes and comparison introduction form one compact section. The four tabs run from red to green, ordering the plans from least protective to most ambitious. Each plan is reduced to three facts and one plain-language conclusion.
-3. Action: residents get prompts for writing their own story rather than a form letter. The email handoff pre-addresses City leadership, the District 6 councilor, and the coalition. The page ends here without a repeated closing pitch or campaign footer.
+3. Action: residents get a compact two-column set of prompts for writing their own story rather than a form letter. The email handoff visibly pre-addresses City leadership and the District 6 councilor; the coalition is silently copied through the email link. The page ends here without a repeated closing pitch or campaign footer.
 
 ## Interaction and accessibility
 
