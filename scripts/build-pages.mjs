@@ -3,8 +3,8 @@ import { readFile, readdir, writeFile } from "node:fs/promises";
 import { extname, join } from "node:path";
 
 const outputDirectory = new URL("../dist/client/", import.meta.url);
-const projectPath = "/hydeparkavenue";
-const publicUrl = `https://benjaminsiegel.github.io${projectPath}`;
+const projectPath = "";
+const publicUrl = "https://foresthills.boston";
 const previewUrl = "http://127.0.0.1:4173/";
 
 const server = spawn(process.execPath, ["node_modules/vinext/dist/cli.js", "start"], {

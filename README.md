@@ -4,7 +4,7 @@ A resident-led campaign site explaining Boston’s inadequate 2026 resurfacing p
 
 ## Public site
 
-[benjaminsiegel.github.io/hydeparkavenue](https://benjaminsiegel.github.io/hydeparkavenue/)
+[foresthills.boston](https://foresthills.boston/)
 
 ## Work on the site
 

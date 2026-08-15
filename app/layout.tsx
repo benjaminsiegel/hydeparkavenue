@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 const socialTitle = "Hyde Park Avenue: No repaving without safety improvements";
 const socialDescription = "Compare Boston’s current resurfacing plan with safer alternatives and tell Mayor Wu’s Streets Team to do better.";
-const socialImage = "https://benjaminsiegel.github.io/hydeparkavenue/og-hyde-park-avenue.png";
+const socialImage = "https://foresthills.boston/og-hyde-park-avenue.png";
 
 export const metadata: Metadata = {
   title: socialTitle,
