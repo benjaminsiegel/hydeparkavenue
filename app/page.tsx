@@ -101,10 +101,6 @@ export default function Home() {
   const letterCardRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    setActivePlan(defaultPlan);
-  }, []);
-
-  useEffect(() => {
     const letterCard = letterCardRef.current;
     if (!letterCard) return;
     const observer = new IntersectionObserver(
@@ -189,7 +185,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="plan-tabs" role="tablist" aria-label="Hyde Park Avenue plans" onKeyDown={handleTabKeys}>
+        <div className="plan-tabs" role="tablist" aria-label="Hyde Park Avenue plans" tabIndex={-1} onKeyDown={handleTabKeys}>
           {plans.map((plan) => (
             <button
               className={`plan-tab tone-${plan.tone}${activePlan.id === plan.id ? " active" : ""}`}
@@ -289,9 +285,9 @@ export default function Home() {
       {!letterInView && <a className="floating-action" href="#write">Write the City <span aria-hidden="true">→</span></a>}
 
       {expanded && (
-        <div className="plan-modal" role="dialog" aria-modal="true" aria-label={`${activePlan.date} enlarged plan`} onClick={() => setExpanded(false)}>
+        <div className="plan-modal" role="dialog" aria-modal="true" aria-label={`${activePlan.date} enlarged plan`}>
           <button className="modal-close" type="button" onClick={() => setExpanded(false)} aria-label="Close enlarged plan">Close ×</button>
-          <img src={activePlan.image} alt={activePlan.alt} onClick={(event) => event.stopPropagation()} />
+          <img src={activePlan.image} alt={activePlan.alt} />
         </div>
       )}
     </main>
