@@ -119,6 +119,13 @@ h3 { margin:0; font:800 clamp(2.25rem,3.4vw,3.8rem)/1 Georgia,serif; letter-spac
 .timeline-sources { display:flex; flex-wrap:wrap; gap:6px 12px; margin-top:11px; }
 .timeline-sources a { color:var(--ink); font-size:.76rem; font-weight:900; line-height:1.35; text-decoration-color:var(--phase-accent); text-underline-offset:3px; }
 .timeline-sources a:hover { color:var(--phase-accent); }
+.timeline-gallery { display:grid; gap:8px; margin:14px 0 0; }
+.timeline-gallery.photo-pair { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.timeline-gallery figure,.phase-photo { margin:0; }
+.timeline-gallery img { width:100%; aspect-ratio:3/2; object-fit:cover; display:block; background:#ddd5c7; }
+.timeline-gallery figcaption,.phase-photo figcaption { margin-top:7px; color:var(--ink-soft); font:italic .73rem/1.35 Georgia,serif; }
+.phase-photo { margin:0 0 14px 29px; padding-top:4px; }
+.phase-photo img { width:100%; max-height:480px; object-fit:cover; object-position:center 32%; display:block; background:#ddd5c7; }
 .plan-modal { position:fixed; inset:0; z-index:50; display:grid; place-items:center; padding:70px 24px 24px; background:rgba(6,14,11,.94); cursor:zoom-out; }
 .plan-modal img { max-width:96vw; max-height:calc(100vh - 100px); object-fit:contain; background:white; box-shadow:0 20px 70px rgba(0,0,0,.45); cursor:default; }
 .modal-close { position:fixed; z-index:51; top:18px; right:22px; padding:11px 15px; border:1px solid rgba(255,255,255,.55); background:transparent; color:white; border-radius:999px; cursor:pointer; font-weight:800; }
@@ -167,6 +174,8 @@ h3 { margin:0; font:800 clamp(2.25rem,3.4vw,3.8rem)/1 Georgia,serif; letter-spac
   .receipts-heading { margin-bottom:28px; }
   .receipts-heading h2 { font-size:clamp(2.8rem,13vw,4.4rem); }
   .timeline-phase { padding:23px 19px 8px; }
+  .timeline-gallery.photo-pair { grid-template-columns:1fr; }
+  .phase-photo { margin-left:29px; }
   .plan-modal { padding:64px 10px 10px; overflow:auto; align-items:start; }
   .plan-modal img { max-width:none; width:1500px; max-height:none; }
 }

@@ -22,17 +22,27 @@ type TimelineLink = {
   href: string;
 };
 
+type TimelineImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+};
+
 type TimelineEntry = {
   date: string;
   title: string;
   body: string;
   links?: TimelineLink[];
+  images?: TimelineImage[];
 };
 
 type TimelinePhase = {
   range: string;
   title: string;
   entries: TimelineEntry[];
+  closingImage?: TimelineImage;
 };
 
 const plans: Plan[] = [
@@ -229,6 +239,14 @@ const timelinePhases: TimelinePhase[] = [
         date: "2009–2018",
         title: "A decade of studies",
         body: "Boston studied traffic, walking, and biking conditions along Hyde Park Avenue. The MBTA studied Route 32 bus stops, and the regional planning agency analyzed congestion and bus operations.",
+        images: [
+          {
+            src: "/timeline/decade-of-studies.webp",
+            alt: "Hyde Park Avenue looking north toward Forest Hills, with four travel lanes and cars parked on both sides",
+            width: 1200,
+            height: 733,
+          },
+        ],
       },
       {
         date: "2019–February 2020",
@@ -249,6 +267,13 @@ const timelinePhases: TimelinePhase[] = [
         ],
       },
     ],
+    closingImage: {
+      src: "/timeline/resident-signs.webp",
+      alt: "Handmade yellow signs calling on Boston and Mayor Wu to make streets safer for walking and biking",
+      width: 900,
+      height: 1200,
+      caption: "Residents have been asking for the same basic promise: streets that are safe to walk and bike.",
+    },
   },
   {
     range: "2024–April 2025",
@@ -268,6 +293,15 @@ const timelinePhases: TimelinePhase[] = [
         date: "October 2024",
         title: "A neighbor is killed; 695 residents demand action",
         body: "Glenn Inghram was killed by an MBTA bus while crossing at Tower Street. A letter and vigil called for immediate and lasting changes; the City promised signal improvements.",
+        images: [
+          {
+            src: "/timeline/glenn-inghram.webp",
+            alt: "WBZ news report showing Glenn Inghram with two dogs",
+            width: 1200,
+            height: 837,
+            caption: "Residents and Glenn Inghram’s family called for safety changes near Forest Hills Station.",
+          },
+        ],
         links: [
           { label: "Vigil and resident letter", href: "https://www.boston.com/news/transportation/2024/10/22/jamaica-plain-community-hosts-vigil-for-man-killed-by-mbta-bus/?amp=1" },
           { label: "City’s signal promise", href: "https://mass.streetsblog.org/2024/10/25/boston-officials-will-adjust-traffic-signals-at-fatal-crash-scene-in-forest-hills" },
@@ -277,6 +311,20 @@ const timelinePhases: TimelinePhase[] = [
         date: "December 2024–January 2025",
         title: "Open houses—but no designs",
         body: "Roughly 110 people attended two City open houses advertised as draft-design meetings. No designs were shown. Residents again asked for protected bike space, a road diet, traffic calming, and better transit.",
+        images: [
+          {
+            src: "/timeline/open-house-presentation.webp",
+            alt: "A City of Boston staff member presenting a slide summarizing residents’ pedestrian, transit, bicycle, and traffic concerns",
+            width: 1200,
+            height: 800,
+          },
+          {
+            src: "/timeline/open-house-crowd.webp",
+            alt: "A crowded Hyde Park Avenue public meeting with residents seated and standing in a school auditorium",
+            width: 1200,
+            height: 801,
+          },
+        ],
         links: [
           { label: "City presentation", href: "https://www.boston.gov/sites/default/files/file/2024/12/Hyde%20Park%20Ave%20Open%20House%20-%20December%2011%2C%202024.pdf" },
         ],
@@ -285,6 +333,15 @@ const timelinePhases: TimelinePhase[] = [
         date: "January–April 2025",
         title: "709 residents call for action",
         body: "An open letter demanded safety and transit improvements in 2025—and an end to meetings without proposals. In April, about 50 residents led their own safety walk to document what needed to change.",
+        images: [
+          {
+            src: "/timeline/safety-walk-2025.webp",
+            alt: "Forest Hills residents gathered on a corner during the April 2025 Hyde Park Avenue safety walk",
+            width: 1200,
+            height: 800,
+            caption: "Residents organized their own safety walk in April 2025.",
+          },
+        ],
         links: [
           { label: "Read the open letter", href: "https://mass.streetsblog.org/2025/01/24/guest-column-lethal-hyde-park-avenue-needs-changes-not-more-meetings" },
         ],
@@ -308,6 +365,14 @@ const timelinePhases: TimelinePhase[] = [
         date: "Fall 2025",
         title: "Eleven councilors demand answers",
         body: "Eleven City Councilors backed a hearing on the delays. Dozens of residents testified, but City officials offered no substantive update.",
+        images: [
+          {
+            src: "/timeline/council-hearing-2025.webp",
+            alt: "Boston City Councilors and officials seated onstage during the fall 2025 Hyde Park Avenue safety hearing",
+            width: 1200,
+            height: 676,
+          },
+        ],
         links: [
           { label: "Council hearing order", href: "https://www.boston.gov/sites/default/files/file/2025/09/Order%20for%20a%20hearing%20to%20discuss%20next%20steps%20to%20improve%20street%20safety%20on%20the%20northern%20stretch%20of%20Hyde%20Park%20Avenue%20from%20Walk%20Hill%20Street%20to%20the%20Arborway.pdf" },
           { label: "Watch the hearing", href: "https://www.youtube.com/watch?v=uZCm8TEn8UA&t=9437s" },
@@ -317,6 +382,14 @@ const timelinePhases: TimelinePhase[] = [
         date: "April 2026",
         title: "Mayor Wu joins the fourth safety walk",
         body: "The Mayor said some safety improvements might accompany fall repaving, but rejected major changes to the street and suggested dedicated bus and bike lanes were inappropriate because of car traffic.",
+        images: [
+          {
+            src: "/timeline/mayor-wu-safety-walk.webp",
+            alt: "Mayor Michelle Wu speaking to residents gathered inside Forest Hills Station during the fourth Hyde Park Avenue safety walk",
+            width: 1200,
+            height: 801,
+          },
+        ],
         links: [
           { label: "Report from the walk", href: "https://www.universalhub.com/2026/mayor-outlines-ideas-making-hyde-park-avenue-safer-near-forest-hills-t" },
         ],
@@ -603,9 +676,39 @@ export default function Home() {
                         ))}
                       </div>
                     )}
+                    {entry.images && (
+                      <div className={`timeline-gallery${entry.images.length > 1 ? " photo-pair" : ""}`}>
+                        {entry.images.map((timelineImage) => (
+                          <figure key={timelineImage.src}>
+                            <img
+                              src={timelineImage.src}
+                              alt={timelineImage.alt}
+                              width={timelineImage.width}
+                              height={timelineImage.height}
+                              loading="lazy"
+                              decoding="async"
+                            />
+                            {timelineImage.caption && <figcaption>{timelineImage.caption}</figcaption>}
+                          </figure>
+                        ))}
+                      </div>
+                    )}
                   </li>
                 ))}
               </ol>
+              {phase.closingImage && (
+                <figure className="phase-photo">
+                  <img
+                    src={phase.closingImage.src}
+                    alt={phase.closingImage.alt}
+                    width={phase.closingImage.width}
+                    height={phase.closingImage.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {phase.closingImage.caption && <figcaption>{phase.closingImage.caption}</figcaption>}
+                </figure>
+              )}
             </section>
           ))}
         </div>
