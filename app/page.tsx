@@ -208,6 +208,8 @@ export default function Home() {
   const [subject, setSubject] = useState("Hyde Park Avenue: No repaving without safety improvements");
   const [letter, setLetter] = useState("");
   const [starterId, setStarterId] = useState("");
+  const [senderName, setSenderName] = useState("");
+  const [zipCode, setZipCode] = useState("");
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -238,20 +240,23 @@ export default function Home() {
     requestAnimationFrame(() => document.getElementById(`tab-${next.id}`)?.focus());
   };
 
-  const copyLetter = async () => {
-    await navigator.clipboard.writeText(`Subject: ${subject}\n\n${letter}`);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
-  };
-
   const chooseStarter = (id: string) => {
     setStarterId(id);
     const starter = letterStarters.find((item) => item.id === id);
     if (starter) setLetter(starter.body);
   };
 
+  const signature = [senderName.trim(), zipCode.trim() && `ZIP code: ${zipCode.trim()}`].filter(Boolean).join("\n");
+  const emailBody = [letter.trim(), signature].filter(Boolean).join("\n\n");
+
+  const copyLetter = async () => {
+    await navigator.clipboard.writeText(`Subject: ${subject}\n\n${emailBody}`);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1800);
+  };
+
   const to = "chris.osgood@boston.gov,tali.robbins@boston.gov,mayor@boston.gov";
-  const mailto = `mailto:${to}?cc=${encodeURIComponent("benjamin.weber@boston.gov")}&bcc=${encodeURIComponent("bostonbetterstreets@gmail.com")}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(letter)}`;
+  const mailto = `mailto:${to}?cc=${encodeURIComponent("benjamin.weber@boston.gov")}&bcc=${encodeURIComponent("bostonbetterstreets@gmail.com")}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
     <main>
@@ -280,7 +285,6 @@ export default function Home() {
       <section className="plans-section" id="plans">
         <div className="section-heading learn-heading">
           <div>
-            <p className="section-kicker">Learn more</p>
             <h2>Paving over the problem—and calling it progress</h2>
           </div>
           <div className="learn-copy">
@@ -293,7 +297,7 @@ export default function Home() {
             </p>
             <p>They won’t even acknowledge their own proposals to make the corridor safer.</p>
             <p className="learn-emphasis">New asphalt isn’t a safety plan. New asphalt is an invitation to drive faster.</p>
-            <a className="section-cta" href="#write">Fight back <span aria-hidden="true">→</span></a>
+            <a className="section-cta" href="#write">Take action <span aria-hidden="true">→</span></a>
           </div>
         </div>
 
@@ -339,7 +343,7 @@ export default function Home() {
 
       <section className="action-section" id="write">
         <div className="action-intro">
-          <p className="section-kicker light-kicker">Fight back</p>
+          <p className="section-kicker light-kicker">Take action</p>
           <h2>No repaving without safety improvements.</h2>
           <p className="action-deck">
             Tell City leaders what a safer Hyde Park Ave would mean for you and
@@ -379,7 +383,7 @@ export default function Home() {
 
           <div className="starter-box">
             <label htmlFor="starter">Want a head start?</label>
-            <p>Choose a starting point, then add your own experience so the letter is genuinely yours.</p>
+            <p>Choose a starting point and write more about your own experiences so the letter is yours.</p>
             <select id="starter" value={starterId} onChange={(event) => chooseStarter(event.target.value)}>
               <option value="">Choose a letter to adapt (optional)</option>
               {letterStarters.map((starter) => (
@@ -397,6 +401,30 @@ export default function Home() {
             placeholder="Start with your own experience. What happens when you use Hyde Park Avenue? Have you had a close call? What would a safer design change for you, your family, or your neighbors?"
             onChange={(event) => setLetter(event.target.value)}
           />
+
+          <div className="sender-fields">
+            <div>
+              <label htmlFor="sender-name">Your name</label>
+              <input
+                id="sender-name"
+                autoComplete="name"
+                value={senderName}
+                onChange={(event) => setSenderName(event.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="zip-code">ZIP code</label>
+              <input
+                id="zip-code"
+                autoComplete="postal-code"
+                inputMode="numeric"
+                maxLength={10}
+                value={zipCode}
+                onChange={(event) => setZipCode(event.target.value)}
+              />
+            </div>
+            <p>Your name and ZIP code will be added to the bottom of the email.</p>
+          </div>
 
           <div className="letter-actions">
             <a className="send-button" href={mailto}>Open draft in my email <span aria-hidden="true">→</span></a>
