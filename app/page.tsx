@@ -17,6 +17,24 @@ type Plan = {
   verdict: string;
 };
 
+type TimelineLink = {
+  label: string;
+  href: string;
+};
+
+type TimelineEntry = {
+  date: string;
+  title: string;
+  body: string;
+  links?: TimelineLink[];
+};
+
+type TimelinePhase = {
+  range: string;
+  title: string;
+  entries: TimelineEntry[];
+};
+
 const plans: Plan[] = [
   {
     id: "current",
@@ -202,6 +220,124 @@ That is not meaningful public engagement, and new asphalt is not a safety plan. 
   },
 ];
 
+const timelinePhases: TimelinePhase[] = [
+  {
+    range: "Before 2019–2023",
+    title: "Plans, studies, and promises",
+    entries: [
+      {
+        date: "2009–2018",
+        title: "A decade of studies",
+        body: "Boston studied traffic, walking, and biking conditions along Hyde Park Avenue. The MBTA studied Route 32 bus stops, and the regional planning agency analyzed congestion and bus operations.",
+      },
+      {
+        date: "2019–February 2020",
+        title: "A real redesign takes shape",
+        body: "The City began a corridor-wide project and developed a preliminary design with bus priority and bike lanes. After a public open house, the work was put on hold during the pandemic.",
+        links: [
+          { label: "City project page", href: "https://www.boston.gov/departments/transportation/project/hyde-park-avenue-multimodal-corridor" },
+          { label: "2020 design", href: "/plans/august-2020.webp" },
+          { label: "Meeting coverage", href: "https://mass.streetsblog.org/2020/02/17/boston-starts-outreach-for-hyde-park-ave-bus-and-bike-improvements" },
+        ],
+      },
+      {
+        date: "2022–2023",
+        title: "The City says the work has restarted",
+        body: "Officials resumed outreach using the 2019 design as a starting point. In October 2023, the project became part of the Southwest Boston Transit Action Plan.",
+        links: [
+          { label: "Transit action plan", href: "https://www.boston.gov/departments/transportation/southwest-boston-transit-action-plan" },
+        ],
+      },
+    ],
+  },
+  {
+    range: "2024–April 2025",
+    title: "Residents document the danger",
+    entries: [
+      {
+        date: "Spring–Fall 2024",
+        title: "More outreach, still no design",
+        body: "The City surveyed riders, visited businesses, held office hours, and attended community events. Residents participated again, but still had no concrete proposal to review.",
+      },
+      {
+        date: "June 2024",
+        title: "Residents ask for immediate fixes",
+        body: "Neighbors met with Councilor Ben Weber and asked for basic near-term safety measures: better signs, daylighting, and safer crossings.",
+      },
+      {
+        date: "October 2024",
+        title: "A neighbor is killed; 695 residents demand action",
+        body: "Glenn Inghram was killed by an MBTA bus while crossing at Tower Street. A letter and vigil called for immediate and lasting changes; the City promised signal improvements.",
+        links: [
+          { label: "Vigil and resident letter", href: "https://www.boston.com/news/transportation/2024/10/22/jamaica-plain-community-hosts-vigil-for-man-killed-by-mbta-bus/?amp=1" },
+          { label: "City’s signal promise", href: "https://mass.streetsblog.org/2024/10/25/boston-officials-will-adjust-traffic-signals-at-fatal-crash-scene-in-forest-hills" },
+        ],
+      },
+      {
+        date: "December 2024–January 2025",
+        title: "Open houses—but no designs",
+        body: "Roughly 110 people attended two City open houses advertised as draft-design meetings. No designs were shown. Residents again asked for protected bike space, a road diet, traffic calming, and better transit.",
+        links: [
+          { label: "City presentation", href: "https://www.boston.gov/sites/default/files/file/2024/12/Hyde%20Park%20Ave%20Open%20House%20-%20December%2011%2C%202024.pdf" },
+        ],
+      },
+      {
+        date: "January–April 2025",
+        title: "709 residents call for action",
+        body: "An open letter demanded safety and transit improvements in 2025—and an end to meetings without proposals. In April, about 50 residents led their own safety walk to document what needed to change.",
+        links: [
+          { label: "Read the open letter", href: "https://mass.streetsblog.org/2025/01/24/guest-column-lethal-hyde-park-avenue-needs-changes-not-more-meetings" },
+        ],
+      },
+    ],
+  },
+  {
+    range: "May 2025–August 2026",
+    title: "A safer plan—then retreat",
+    entries: [
+      {
+        date: "May–July 2025",
+        title: "A safer option wins support—then disappears",
+        body: "The City presented two resurfacing options. Hundreds of residents and many businesses backed the three-lane alternative as an imperfect but meaningful step. By July, officials said neither option would happen.",
+        links: [
+          { label: "City’s May presentation", href: "https://www.boston.gov/sites/default/files/file/2025/06/Hyde%20Park%20Ave%20Slides%202025_05_21.pdf" },
+          { label: "Three-lane design", href: "/plans/may-2025-alt2.webp" },
+        ],
+      },
+      {
+        date: "Fall 2025",
+        title: "Eleven councilors demand answers",
+        body: "Eleven City Councilors backed a hearing on the delays. Dozens of residents testified, but City officials offered no substantive update.",
+        links: [
+          { label: "Council hearing order", href: "https://www.boston.gov/sites/default/files/file/2025/09/Order%20for%20a%20hearing%20to%20discuss%20next%20steps%20to%20improve%20street%20safety%20on%20the%20northern%20stretch%20of%20Hyde%20Park%20Avenue%20from%20Walk%20Hill%20Street%20to%20the%20Arborway.pdf" },
+          { label: "Watch the hearing", href: "https://www.youtube.com/watch?v=uZCm8TEn8UA&t=9437s" },
+        ],
+      },
+      {
+        date: "April 2026",
+        title: "Mayor Wu joins the fourth safety walk",
+        body: "The Mayor said some safety improvements might accompany fall repaving, but rejected major changes to the street and suggested dedicated bus and bike lanes were inappropriate because of car traffic.",
+        links: [
+          { label: "Report from the walk", href: "https://www.universalhub.com/2026/mayor-outlines-ideas-making-hyde-park-avenue-safer-near-forest-hills-t" },
+        ],
+      },
+      {
+        date: "June 2026",
+        title: "The City expects only repaving",
+        body: "Officials told residents a traffic-pattern consultant had been hired—but that no major project was expected beyond repaving.",
+      },
+      {
+        date: "August 2026",
+        title: "The final plan: paint and signs",
+        body: "The City’s current plan keeps four lanes and adds paint, signs, and better sight lines for drivers. It omits the earlier safety designs and makes no changes at Ukraine Way.",
+        links: [
+          { label: "See the current plan", href: "/plans/august-2026.webp" },
+        ],
+      },
+    ],
+  },
+];
+
 export default function Home() {
   const [activePlan, setActivePlan] = useState(defaultPlan);
   const [expanded, setExpanded] = useState(false);
@@ -289,7 +425,7 @@ export default function Home() {
           </div>
           <div className="learn-copy">
             <p>
-              After seven years of studies and public meetings, all the City
+              After <a className="history-link" href="#receipts">seven years of studies and public meetings</a>, all the City
               can muster is three blocks of new asphalt and a fresh coat of
               paint. No attempt to slow cars down. No attempt to make Ukraine
               Way safer for pedestrians. Not even a pretense of helping bus or
@@ -357,6 +493,7 @@ export default function Home() {
             <li>Drivers running red lights at Ukraine Way</li>
             <li>A time you or someone you know had a close call here</li>
           </ul>
+          <a className="action-history-link" href="#receipts">See why residents are taking action <span aria-hidden="true">↓</span></a>
         </div>
 
         <form className="letter-card" onSubmit={(event) => event.preventDefault()}>
@@ -431,6 +568,47 @@ export default function Home() {
             <button className="copy-button" type="button" onClick={copyLetter} disabled={!letter.trim()}>{copied ? "Copied" : "Copy message"}</button>
           </div>
         </form>
+      </section>
+
+      <section className="receipts-section" id="receipts">
+        <div className="receipts-heading">
+          <div>
+            <p className="section-kicker">The receipts</p>
+            <h2>Seven years of Forest Hills residents ignored</h2>
+          </div>
+          <p className="receipts-intro">
+            The record starts long before 2019. But the pattern since then is
+            unmistakable: studies, meetings, promises, and safer designs—then
+            delay, retreat, and a plan that leaves the danger in place.
+          </p>
+        </div>
+
+        <div className="timeline-phases">
+          {timelinePhases.map((phase, phaseIndex) => (
+            <section className={`timeline-phase phase-${phaseIndex + 1}`} key={phase.range}>
+              <p className="phase-range">{phase.range}</p>
+              <h3>{phase.title}</h3>
+              <ol className="timeline-list">
+                {phase.entries.map((entry) => (
+                  <li className="timeline-item" key={`${entry.date}-${entry.title}`}>
+                    <time>{entry.date}</time>
+                    <h4>{entry.title}</h4>
+                    <p>{entry.body}</p>
+                    {entry.links && (
+                      <div className="timeline-sources" aria-label={`Sources for ${entry.title}`}>
+                        {entry.links.map((link) => (
+                          <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                            {link.label} <span aria-hidden="true">↗</span>
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ))}
+        </div>
       </section>
 
       {expanded && (
