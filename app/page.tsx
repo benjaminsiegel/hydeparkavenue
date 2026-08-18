@@ -418,6 +418,7 @@ export default function Home() {
   const [letter, setLetter] = useState("");
   const [starterId, setStarterId] = useState("");
   const [senderName, setSenderName] = useState("");
+  const [street, setStreet] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [copied, setCopied] = useState(false);
 
@@ -455,13 +456,19 @@ export default function Home() {
     if (starter) setLetter(starter.body);
   };
 
-  const signature = [senderName.trim(), zipCode.trim() && `ZIP code: ${zipCode.trim()}`].filter(Boolean).join("\n");
+  const signature = [senderName.trim(), street.trim(), zipCode.trim() && `ZIP code: ${zipCode.trim()}`].filter(Boolean).join("\n");
   const emailBody = [letter.trim(), signature].filter(Boolean).join("\n\n");
 
-  const copyLetter = async () => {
+  const copyLetter = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (!event.currentTarget.form?.reportValidity()) return;
     await navigator.clipboard.writeText(`Subject: ${subject}\n\n${emailBody}`);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1800);
+  };
+
+  const openEmailDraft = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    window.location.href = mailto;
   };
 
   const to = "chris.osgood@boston.gov,tali.robbins@boston.gov,mayor@boston.gov";
@@ -569,7 +576,7 @@ export default function Home() {
           <a className="action-history-link" href="#receipts">See why residents are taking action <span aria-hidden="true">↓</span></a>
         </div>
 
-        <form className="letter-card" onSubmit={(event) => event.preventDefault()}>
+        <form className="letter-card" onSubmit={openEmailDraft}>
           <div className="letter-routing">
             <div className="route-row">
               <span className="route-label">To</span>
@@ -614,30 +621,44 @@ export default function Home() {
 
           <div className="sender-fields">
             <div>
-              <label htmlFor="sender-name">Your name</label>
+              <label htmlFor="sender-name">Your name (required)</label>
               <input
                 id="sender-name"
                 autoComplete="name"
+                required
                 value={senderName}
                 onChange={(event) => setSenderName(event.target.value)}
               />
             </div>
             <div>
-              <label htmlFor="zip-code">ZIP code</label>
+              <label htmlFor="street">Street (optional)</label>
+              <input
+                id="street"
+                autoComplete="street-address"
+                placeholder="e.g. Tower Street"
+                value={street}
+                onChange={(event) => setStreet(event.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="zip-code">ZIP code (required)</label>
               <input
                 id="zip-code"
                 autoComplete="postal-code"
                 inputMode="numeric"
                 maxLength={10}
+                pattern="[0-9]{5}(-[0-9]{4})?"
+                required
+                title="Enter a five-digit ZIP code, optionally followed by four more digits"
                 value={zipCode}
                 onChange={(event) => setZipCode(event.target.value)}
               />
             </div>
-            <p>Your name and ZIP code will be added to the bottom of the email.</p>
+            <p>Your name, street (if provided), and ZIP code will be added to the bottom of the email.</p>
           </div>
 
           <div className="letter-actions">
-            <a className="send-button" href={mailto}>Open draft in my email <span aria-hidden="true">→</span></a>
+            <button className="send-button" type="submit">Open draft in my email <span aria-hidden="true">→</span></button>
             <button className="copy-button" type="button" onClick={copyLetter} disabled={!letter.trim()}>{copied ? "Copied" : "Copy message"}</button>
           </div>
         </form>

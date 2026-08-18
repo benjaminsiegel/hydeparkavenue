@@ -90,11 +90,11 @@ h3 { margin:0; font:800 clamp(2.25rem,3.4vw,3.8rem)/1 Georgia,serif; letter-spac
 .starter-box label { margin:0 0 6px; }
 .starter-box p { margin:0 0 13px; color:var(--ink-soft); font-size:.95rem; line-height:1.45; }
 .starter-box small { display:block; margin-top:8px; color:var(--ink-soft); line-height:1.35; }
-.sender-fields { display:grid; grid-template-columns:1fr minmax(130px,.42fr); gap:0 14px; }
+.sender-fields { display:grid; grid-template-columns:1fr .8fr minmax(130px,.42fr); gap:0 14px; }
 .sender-fields>p { grid-column:1/-1; margin:8px 0 0; color:var(--ink-soft); font-size:.88rem; line-height:1.4; }
 .letter-actions { display:flex; gap:12px; margin-top:20px; }
 .send-button,.copy-button { min-height:54px; display:inline-flex; justify-content:center; align-items:center; padding:14px 20px; border-radius:3px; font-weight:800; cursor:pointer; }
-.send-button { flex:1; gap:18px; background:var(--red); color:white; text-decoration:none; }
+.send-button { flex:1; gap:18px; border:0; background:var(--red); color:white; text-decoration:none; }
 .send-button:hover { background:var(--red-dark); }
 .copy-button { border:1px solid var(--ink); background:transparent; color:var(--ink); }
 .copy-button:hover { background:var(--cream); }
