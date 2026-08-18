@@ -42,6 +42,7 @@ type TimelinePhase = {
   range: string;
   title: string;
   entries: TimelineEntry[];
+  openingImage?: TimelineImage;
   closingImage?: TimelineImage;
 };
 
@@ -267,12 +268,19 @@ const timelinePhases: TimelinePhase[] = [
         ],
       },
     ],
-    closingImage: {
+    openingImage: {
       src: "/timeline/resident-signs.webp",
       alt: "Handmade yellow signs calling on Boston and Mayor Wu to make streets safer for walking and biking",
       width: 900,
       height: 1200,
       caption: "Residents have been asking for the same basic promise: streets that are safe to walk and bike.",
+    },
+    closingImage: {
+      src: "/timeline/safety-walk-poster-2023.webp",
+      alt: "Poster for a January 28 Hyde Park Avenue safety walk beginning at Forest Hills Station",
+      width: 695,
+      height: 900,
+      caption: "Poster for the January 2023 Hyde Park Avenue Safety Walk.",
     },
   },
   {
@@ -699,6 +707,19 @@ export default function Home() {
             <section className={`timeline-phase phase-${phaseIndex + 1}`} key={phase.range}>
               <p className="phase-range">{phase.range}</p>
               <h3>{phase.title}</h3>
+              {phase.openingImage && (
+                <figure className="phase-photo phase-opening-photo">
+                  <img
+                    src={phase.openingImage.src}
+                    alt={phase.openingImage.alt}
+                    width={phase.openingImage.width}
+                    height={phase.openingImage.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {phase.openingImage.caption && <figcaption>{phase.openingImage.caption}</figcaption>}
+                </figure>
+              )}
               <ol className="timeline-list">
                 {phase.entries.map((entry) => (
                   <li className="timeline-item" key={`${entry.date}-${entry.title}`}>
