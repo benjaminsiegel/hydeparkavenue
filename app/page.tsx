@@ -486,7 +486,7 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#plans">Learn more</a>
-            <a className="button button-quiet" href="#write">Fight back</a>
+            <a className="button button-quiet" href="#write">Take action</a>
           </div>
         </div>
       </section>
@@ -713,6 +713,13 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <footer className="site-footer">
+        <p>
+          Organized by Forest Hills residents and the Boston Better Streets
+          Coalition. For questions or media information, <a href="mailto:bostonbetterstreets@gmail.com">email here</a>.
+        </p>
+      </footer>
 
       {expanded && (
         <div className="plan-modal" role="dialog" aria-modal="true" aria-label={`${activePlan.date} enlarged plan`}>

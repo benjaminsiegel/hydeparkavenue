@@ -126,6 +126,10 @@ h3 { margin:0; font:800 clamp(2.25rem,3.4vw,3.8rem)/1 Georgia,serif; letter-spac
 .timeline-gallery figcaption,.phase-photo figcaption { margin-top:7px; color:var(--ink-soft); font:italic .73rem/1.35 Georgia,serif; }
 .phase-photo { margin:0 0 14px 29px; padding-top:4px; }
 .phase-photo img { width:100%; max-height:480px; object-fit:cover; object-position:center 32%; display:block; background:#ddd5c7; }
+.site-footer { padding:30px 4vw; background:var(--ink); color:rgba(255,255,255,.78); }
+.site-footer p { max-width:1380px; margin:0 auto; font-size:.9rem; line-height:1.5; }
+.site-footer a { color:white; font-weight:900; text-decoration-color:var(--safety); text-decoration-thickness:2px; text-underline-offset:4px; }
+.site-footer a:hover { color:var(--safety); }
 .plan-modal { position:fixed; inset:0; z-index:50; display:grid; place-items:center; padding:70px 24px 24px; background:rgba(6,14,11,.94); cursor:zoom-out; }
 .plan-modal img { max-width:96vw; max-height:calc(100vh - 100px); object-fit:contain; background:white; box-shadow:0 20px 70px rgba(0,0,0,.45); cursor:default; }
 .modal-close { position:fixed; z-index:51; top:18px; right:22px; padding:11px 15px; border:1px solid rgba(255,255,255,.55); background:transparent; color:white; border-radius:999px; cursor:pointer; font-weight:800; }
