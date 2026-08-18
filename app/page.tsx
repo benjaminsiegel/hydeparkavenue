@@ -420,6 +420,7 @@ export default function Home() {
   const [senderName, setSenderName] = useState("");
   const [street, setStreet] = useState("");
   const [zipCode, setZipCode] = useState("");
+  const [publicationConsent, setPublicationConsent] = useState(false);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -456,7 +457,11 @@ export default function Home() {
     if (starter) setLetter(starter.body);
   };
 
-  const signature = [senderName.trim(), street.trim(), zipCode.trim() && `ZIP code: ${zipCode.trim()}`].filter(Boolean).join("\n");
+  const signature = [
+    senderName.trim(),
+    street.trim(),
+    zipCode.trim() && `ZIP code: ${zipCode.trim()}${publicationConsent ? " *" : ""}`,
+  ].filter(Boolean).join("\n");
   const emailBody = [letter.trim(), signature].filter(Boolean).join("\n\n");
 
   const copyLetter = async (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -656,6 +661,18 @@ export default function Home() {
             </div>
             <p>Your name, street (if provided), and ZIP code will be added to the bottom of the email.</p>
           </div>
+
+          <label className="publication-consent">
+            <input
+              type="checkbox"
+              checked={publicationConsent}
+              onChange={(event) => setPublicationConsent(event.target.checked)}
+            />
+            <span>
+              It’s OK to publish my name, ZIP code, and excerpts from my comments on this site.
+              <small>Leave this unchecked if you do not want these details shared.</small>
+            </span>
+          </label>
 
           <div className="letter-actions">
             <button className="send-button" type="submit">Open draft in my email <span aria-hidden="true">→</span></button>
