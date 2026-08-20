@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { defaultSubjects, letterCategories } from "./letter-templates";
 
 type Plan = {
   id: string;
@@ -119,117 +120,6 @@ const plans: Plan[] = [
 ];
 
 const defaultPlan = plans.find((plan) => plan.id === "current") ?? plans[0];
-
-const letterStarters = [
-  {
-    id: "resident",
-    label: "As a Forest Hills resident",
-    body: `Dear Mayor Wu and Streets Team,
-
-I live in Forest Hills and use Hyde Park Avenue regularly. [Add a few sentences about what you experience here.]
-
-Repaving three blocks with new asphalt, paint, and signs does not address the speeding, reckless driving, difficult crossings, or missing bicycle connections that make this corridor unsafe. Please do not move ahead until the City has a plan for lasting safety improvements—not just a smoother surface.
-
-Hyde Park Avenue should be safer for everyone who walks, bikes, drives, takes the bus, or lives nearby. Please take our safety into account before repaving it.`,
-  },
-  {
-    id: "parent",
-    label: "As a parent or caregiver",
-    body: `Dear Mayor Wu and Streets Team,
-
-I use Hyde Park Avenue with my family, and [describe a crossing, trip, or moment that has felt unsafe]. The speed and behavior of drivers make ordinary trips feel far more dangerous than they should.
-
-Fresh asphalt and paint will not protect a child crossing the street or slow a reckless driver. Please do not repave these blocks until the City includes permanent improvements that shorten crossings, calm traffic, and make people visible and protected.
-
-Our families should not have to accept another inadequate plan for years to come.`,
-  },
-  {
-    id: "walking",
-    label: "As someone who walks here",
-    body: `Dear Mayor Wu and Streets Team,
-
-I regularly walk along and across Hyde Park Avenue. [Describe where you cross and what makes it difficult or frightening.]
-
-The current proposal leaves long, exposed crossings and dangerous driving patterns essentially unchanged. A fresh coat of paint is not a pedestrian safety plan. Please use this opportunity to add lasting protection, especially at Ukraine Way and other places where people struggle to cross safely.
-
-Do not repave Hyde Park Avenue until the design takes the safety of people walking seriously.`,
-  },
-  {
-    id: "biking",
-    label: "As someone who bikes here",
-    body: `Dear Mayor Wu and Streets Team,
-
-I bike in and around Forest Hills, and Hyde Park Avenue does not provide a safe, clear way to continue my trip. [Describe the route you take or a place where you feel forced into danger.]
-
-The City has previously studied designs with meaningful bicycle connections, yet the current repaving plan offers none. New asphalt without a safe route will only preserve the same dangerous conditions.
-
-Please do not repave these blocks until the City adopts a design that protects people biking as well as people walking and driving.`,
-  },
-  {
-    id: "transit",
-    label: "As a bus or transit rider",
-    body: `Dear Mayor Wu and Streets Team,
-
-I use Hyde Park Avenue to reach buses and Forest Hills Station. [Describe your regular trip and the part that feels unsafe or unreliable.]
-
-People should be able to walk, bike, and cross the street safely on the way to transit. The current plan does not meaningfully improve those connections, despite years of study and earlier proposals that did.
-
-Please do not treat new asphalt as progress. Repave Hyde Park Avenue only after the City has incorporated lasting safety and transit improvements.`,
-  },
-  {
-    id: "driving",
-    label: "As someone who drives here",
-    body: `Dear Mayor Wu and Streets Team,
-
-I drive on Hyde Park Avenue and regularly see [describe speeding, weaving, red-light running, or another dangerous behavior]. The street's design encourages behavior that puts everyone at risk, including careful drivers.
-
-Resurfacing without redesigning the street will not solve that problem—and smoother pavement may make speeding even easier. Please adopt permanent traffic-calming and crossing improvements before repaving these blocks.
-
-Drivers, pedestrians, cyclists, and transit riders all need a street designed for predictable, safe travel.`,
-  },
-  {
-    id: "accessibility",
-    label: "About age or accessibility",
-    body: `Dear Mayor Wu and Streets Team,
-
-Hyde Park Avenue's long and exposed crossings are especially difficult for older residents, disabled people, and anyone who needs more time to cross. [Share your own experience or that of someone you know.]
-
-Paint and signs do not provide the physical protection people need. The City should shorten crossings, slow drivers, and design for people with a wide range of ages and abilities.
-
-Please do not repave Hyde Park Avenue until those lasting safety improvements are part of the plan.`,
-  },
-  {
-    id: "close-call",
-    label: "After a close call",
-    body: `Dear Mayor Wu and Streets Team,
-
-I had—or witnessed—a close call on Hyde Park Avenue. [Describe what happened, where it happened, and how it affected you.]
-
-Experiences like this are why residents have asked for meaningful safety changes for years. Repaving the street without addressing the design that enables speeding, red-light running, and unsafe crossings ignores what people are telling the City.
-
-Please pause the current plan and make lasting safety improvements before putting down new asphalt.`,
-  },
-  {
-    id: "business",
-    label: "As a local business customer or owner",
-    body: `Dear Mayor Wu and Streets Team,
-
-I own, work at, or regularly visit businesses near Hyde Park Avenue. [Describe your connection to the corridor.]
-
-A safer street would make it easier for customers, workers, and neighbors to reach local businesses on foot, by bike, by transit, and by car. The current proposal misses that opportunity and leaves dangerous conditions in place.
-
-Please do not repave these blocks until the City has included permanent safety improvements that support the people and businesses of Forest Hills.`,
-  },
-  {
-    id: "accountability",
-    label: "About the City's broken process",
-    body: `Dear Mayor Wu and Streets Team,
-
-After seven years of studies and public meetings, residents deserve more than three blocks of asphalt and paint. The City developed stronger alternatives—including a three-lane plan supported by 700 residents and many local businesses—but now refuses even to acknowledge those proposals.
-
-That is not meaningful public engagement, and new asphalt is not a safety plan. Please explain why the safer alternatives were abandoned and do not repave Hyde Park Avenue until the design addresses speeding, unsafe crossings, and the needs of bus and bike riders.`,
-  },
-];
 
 const timelinePhases: TimelinePhase[] = [
   {
@@ -422,14 +312,73 @@ const timelinePhases: TimelinePhase[] = [
 export default function Home() {
   const [activePlan, setActivePlan] = useState(defaultPlan);
   const [expanded, setExpanded] = useState(false);
-  const [subject, setSubject] = useState("Hyde Park Avenue: No repaving without safety improvements");
+  const [subject, setSubject] = useState(defaultSubjects[0]);
   const [letter, setLetter] = useState("");
   const [starterId, setStarterId] = useState("");
+  const [variantSelections, setVariantSelections] = useState<Record<string, number>>({});
   const [senderName, setSenderName] = useState("");
   const [street, setStreet] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [publicationConsent, setPublicationConsent] = useState(false);
   const [copied, setCopied] = useState(false);
+  const didRandomizeLetters = useRef(false);
+
+  useEffect(() => {
+    if (didRandomizeLetters.current) return;
+    didRandomizeLetters.current = true;
+
+    const randomIndex = (length: number) => {
+      if (length <= 1) return 0;
+      if (globalThis.crypto?.getRandomValues) {
+        return globalThis.crypto.getRandomValues(new Uint32Array(1))[0] % length;
+      }
+      return Math.floor(Math.random() * length);
+    };
+
+    const differentIndex = (length: number, previous: number | null) => {
+      if (length <= 1) return 0;
+      if (previous === null || previous < 0 || previous >= length) return randomIndex(length);
+      const candidate = randomIndex(length - 1);
+      return candidate >= previous ? candidate + 1 : candidate;
+    };
+
+    const selections: Record<string, number> = {};
+
+    for (const category of letterCategories) {
+      const storageKey = `hpa-action:letter:${category.id}`;
+      let previous: number | null = null;
+      try {
+        const stored = window.localStorage.getItem(storageKey);
+        previous = stored === null ? null : Number(stored);
+      } catch {
+        previous = null;
+      }
+      const selected = differentIndex(category.variants.length, previous);
+      selections[category.id] = selected;
+      try {
+        window.localStorage.setItem(storageKey, String(selected));
+      } catch {
+        // The randomized version still works when browser storage is unavailable.
+      }
+    }
+
+    let previousSubject: number | null = null;
+    try {
+      const stored = window.localStorage.getItem("hpa-action:subject");
+      previousSubject = stored === null ? null : Number(stored);
+    } catch {
+      previousSubject = null;
+    }
+    const subjectIndex = differentIndex(defaultSubjects.length, previousSubject);
+    try {
+      window.localStorage.setItem("hpa-action:subject", String(subjectIndex));
+    } catch {
+      // The randomized subject still works when browser storage is unavailable.
+    }
+
+    setVariantSelections(selections);
+    setSubject(defaultSubjects[subjectIndex]);
+  }, []);
 
   useEffect(() => {
     if (!expanded) return;
@@ -461,8 +410,11 @@ export default function Home() {
 
   const chooseStarter = (id: string) => {
     setStarterId(id);
-    const starter = letterStarters.find((item) => item.id === id);
-    if (starter) setLetter(starter.body);
+    const category = letterCategories.find((item) => item.id === id);
+    if (!category) return;
+    const variant = category.variants[variantSelections[id] ?? 0];
+    setLetter(variant.body);
+    setSubject(variant.subject);
   };
 
   const signature = [
@@ -616,8 +568,8 @@ export default function Home() {
             <p>Choose a starting point and write more about your own experiences so the letter is yours.</p>
             <select id="starter" value={starterId} onChange={(event) => chooseStarter(event.target.value)}>
               <option value="">Choose a letter to adapt (optional)</option>
-              {letterStarters.map((starter) => (
-                <option key={starter.id} value={starter.id}>{starter.label}</option>
+              {letterCategories.map((category) => (
+                <option key={category.id} value={category.id}>{category.label}</option>
               ))}
             </select>
             <small>Choosing another starting point will replace the message below.</small>
