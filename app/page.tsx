@@ -639,8 +639,8 @@ export default function Home() {
               onChange={(event) => setPublicationConsent(event.target.checked)}
             />
             <span>
-              It’s OK to publish my name, ZIP code, and excerpts from my comments on this site.
-              <small>Leave this unchecked if you do not want these details shared.</small>
+              Please help us amplify our message.
+              <small>Check this box to allow us to share your first name, last initial, ZIP code, and an excerpt from your comments.</small>
             </span>
           </label>
 
