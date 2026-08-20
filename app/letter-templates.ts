@@ -29,7 +29,7 @@ export const letterCategories: LetterCategory[] = [
     variants: [
       {
         subject: "Forest Hills residents need a safer Hyde Park Avenue",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 I live in Forest Hills and use Hyde Park Avenue regularly. [Describe when and how you use the street, and what you see there.]
 
@@ -39,7 +39,7 @@ Please do not repave these blocks until the City includes lasting safety improve
       },
       {
         subject: "Hyde Park Avenue deserves more than another temporary fix",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Forest Hills residents have attended meetings, signed letters, joined safety walks, and explained the same problems for years. I have personally experienced [describe a problem you encounter on Hyde Park Avenue].
 
@@ -49,7 +49,7 @@ Please return with a plan that calms traffic, protects crossings, and connects p
       },
       {
         subject: "Do not lock in an unsafe Hyde Park Avenue for years",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 I am writing as a Forest Hills resident because the fall repaving plan would lock an inadequate design into place for many years. [Share what part of the corridor concerns you most.]
 
@@ -59,7 +59,7 @@ Pause the current proposal and use the resurfacing project to make permanent saf
       },
       {
         subject: "Mayor Wu: listen to Forest Hills on Hyde Park Avenue",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 What was the purpose of years of public engagement if the final Hyde Park Avenue plan leaves the central safety problems untouched? Residents have consistently asked for slower traffic, shorter crossings, safer intersections, and a route for people biking.
 
@@ -69,7 +69,7 @@ Please listen to the people who live with this street every day. Do not repave H
       },
       {
         subject: "Make Hyde Park Avenue safer while the street is already being rebuilt",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 When a dangerous street is already being resurfaced, the responsible choice is to make it safer at the same time. I live nearby, and [describe how Hyde Park Avenue affects your daily life].
 
@@ -85,7 +85,7 @@ Please revise the fall project to include meaningful traffic calming and permane
     variants: [
       {
         subject: "Children need a safer Hyde Park Avenue",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 I use Hyde Park Avenue with my family, and [describe a crossing, trip, or moment that has felt unsafe]. The speed and behavior of drivers make ordinary trips feel far more dangerous than they should.
 
@@ -95,7 +95,7 @@ Our children should not have to wait through another generation of plans and mee
       },
       {
         subject: "Do not repave Hyde Park Avenue without protecting families",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Parents and caregivers make constant calculations on Hyde Park Avenue: Is there enough time to cross? Will a turning driver stop? Can a child safely bike or walk here? In my family, [describe the calculation you have to make].
 
@@ -105,7 +105,7 @@ Please redesign the project around the safety of children, caregivers, and every
       },
       {
         subject: "Hyde Park Avenue must be safe for children to cross",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 No parent should have to teach a child that a neighborhood street is simply too dangerous to cross. Yet on Hyde Park Avenue, [describe where or why crossing feels unsafe for your family].
 
@@ -115,7 +115,7 @@ Please include permanent crossing protection and traffic calming in this fall’
       },
       {
         subject: "Put family safety first on Hyde Park Avenue",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Hyde Park Avenue connects homes, schools, shops, buses, and Forest Hills Station. Families should be able to use that connection safely. My own experience is [share how your family travels here and what makes it difficult].
 
@@ -125,7 +125,7 @@ Please adopt a design that slows drivers and protects people crossing before the
       },
       {
         subject: "Give Forest Hills families a safer Hyde Park Avenue now",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Families have already waited through years of studies and engagement on Hyde Park Avenue. We should not be asked to wait through another paving cycle for basic safety improvements.
 
@@ -141,7 +141,7 @@ Use this project to create shorter crossings, calmer traffic, and safer connecti
     variants: [
       {
         subject: "Hyde Park Avenue crossings cannot wait",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 I regularly walk along and across Hyde Park Avenue. [Describe where you cross and what makes it difficult or frightening.]
 
@@ -151,7 +151,7 @@ Do not repave Hyde Park Avenue until the design takes the safety of people walki
       },
       {
         subject: "Make Hyde Park Avenue safe to cross before repaving",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Crossing Hyde Park Avenue should not require courage, luck, or a sprint. At [name a location], I experience [describe the problem: speed, distance, turning cars, visibility, or signal timing].
 
@@ -161,7 +161,7 @@ Please restore meaningful pedestrian improvements and calm traffic before resurf
       },
       {
         subject: "Paint is not pedestrian protection on Hyde Park Avenue",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 The City’s Hyde Park Avenue plan asks people walking to trust paint and signs while four lanes of traffic remain. My experience at [location] shows why that is not enough: [tell what happens there].
 
@@ -171,7 +171,7 @@ Please do not call resurfacing progress while leaving people exposed. Revise the
       },
       {
         subject: "Shorten and protect Hyde Park Avenue crossings",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 People walking on Hyde Park Avenue are expected to cross a wide roadway while monitoring several lanes, turning vehicles, and drivers who may run the light. [Describe a crossing you use or avoid.]
 
@@ -181,7 +181,7 @@ Please choose a design that makes crossings shorter and more predictable. Do not
       },
       {
         subject: "Hyde Park Avenue needs a pedestrian safety plan",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Walking is how many residents reach buses, businesses, homes, and Forest Hills Station. Yet [describe how the street interrupts or endangers one of your walking trips].
 
@@ -197,7 +197,7 @@ Please make safe crossings a central requirement of this project and implement l
     variants: [
       {
         subject: "Hyde Park Avenue still needs a safe bicycle connection",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 I bike in and around Forest Hills, and Hyde Park Avenue does not provide a safe, clear way to continue my trip. [Describe the route you take or a place where you are forced into danger.]
 
@@ -207,7 +207,7 @@ Please do not repave these blocks until the City adopts a design that protects p
       },
       {
         subject: "Do not strand bike riders at Forest Hills on Hyde Park Avenue",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Forest Hills is a major transportation hub, but people arriving by bike are left without a safe way to continue along Hyde Park Avenue. I encounter this gap when [describe your route or destination].
 
@@ -217,7 +217,7 @@ Please include a safe, legible bicycle connection in the project before construc
       },
       {
         subject: "New pavement will not make biking on Hyde Park Avenue safe",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Smoother pavement can make a street more comfortable to bike on, but it cannot make four fast traffic lanes safe. On Hyde Park Avenue, [share a close pass, merge, turn, or other problem you experience].
 
@@ -227,7 +227,7 @@ Please use the resurfacing project to build a real bicycle connection and calm t
       },
       {
         subject: "Restore a safe bike route to the Hyde Park Avenue plan",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Boston developed a 2020 multimodal design and a 2025 three-lane option that both made room for people biking. The finalized plan has erased that progress.
 
@@ -237,7 +237,7 @@ Please explain why the bicycle connection disappeared and restore a safe route b
       },
       {
         subject: "Hyde Park Avenue should connect every way people travel",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Hyde Park Avenue carries people walking, biking, driving, and taking transit, but the repaving plan is designed almost entirely around cars. [Describe your bicycle trip and why this corridor matters to it.]
 
@@ -253,7 +253,7 @@ Please revise the design so people biking are protected and connected before the
     variants: [
       {
         subject: "Make Hyde Park Avenue safer for transit riders",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 I use Hyde Park Avenue to reach buses and Forest Hills Station. [Describe your regular trip and the part that feels unsafe or unreliable.]
 
@@ -263,7 +263,7 @@ Please do not treat new asphalt as progress. Repave Hyde Park Avenue only after 
       },
       {
         subject: "A safer Hyde Park Avenue is essential to reaching the bus",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 A bus stop is only useful if people can reach it safely. On my trip along Hyde Park Avenue, [describe a crossing, stop, or transfer that is difficult].
 
@@ -273,7 +273,7 @@ Please redesign this project around complete trips: safer crossings, calmer traf
       },
       {
         subject: "Do not repave Hyde Park Avenue and ignore Route 32 riders",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Route 32 riders have been part of Hyde Park Avenue studies for more than a decade, yet the current plan offers no meaningful transit improvement. I rely on this corridor for [describe your trip or destination].
 
@@ -283,7 +283,7 @@ Please include safety and transit improvements in the fall project rather than p
       },
       {
         subject: "Hyde Park Avenue repaving must improve access to Forest Hills",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Forest Hills Station serves thousands of daily trips, and Hyde Park Avenue is one of its most important approaches. [Explain how you reach the station and where the trip breaks down.]
 
@@ -293,7 +293,7 @@ Please use resurfacing to create safer, more direct access to Forest Hills for e
       },
       {
         subject: "Bring safety and bus priority back to Hyde Park Avenue",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 The City once described Hyde Park Avenue as a multimodal corridor project, with bus priority and safer bicycle connections. The current plan has been reduced to asphalt, signs, and paint.
 
@@ -309,7 +309,7 @@ Please restore the project’s multimodal purpose and make lasting safety and tr
     variants: [
       {
         subject: "A safer Hyde Park Avenue will help responsible drivers too",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 I drive on Hyde Park Avenue and regularly see [describe speeding, weaving, red-light running, or another dangerous behavior]. The street’s design encourages behavior that puts everyone at risk, including careful drivers.
 
@@ -319,7 +319,7 @@ Drivers, pedestrians, cyclists, and transit riders all need a street designed fo
       },
       {
         subject: "Stop dangerous weaving and speeding on Hyde Park Avenue",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Behind the wheel on Hyde Park Avenue, I see how four lanes invite drivers to weave, pass, and race toward the next red light. [Describe what you regularly observe and where.]
 
@@ -329,7 +329,7 @@ Please reconsider that approach and calm the street before repaving it.`,
       },
       {
         subject: "Do not make Hyde Park Avenue smoother but just as dangerous",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 As someone who drives this corridor, I am concerned that fresh asphalt without design changes will make an already fast street feel even faster. At [location], I have seen [describe a dangerous maneuver or recurring problem].
 
@@ -339,7 +339,7 @@ Please include lane reduction, traffic calming, and protected crossings in the p
       },
       {
         subject: "Hyde Park Avenue needs predictable traffic, not four unsafe lanes",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Driving should not require guessing whether another vehicle will speed past, cut across lanes, or run the light at Ukraine Way. [Share what you experience while driving here.]
 
@@ -349,7 +349,7 @@ Please choose a design that makes Hyde Park Avenue calmer and more predictable b
       },
       {
         subject: "Traffic safety on Hyde Park Avenue requires a better design",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Dangerous driving is not only a matter of individual choices; Hyde Park Avenue’s design enables it. I see the results when [describe a routine condition or incident].
 
@@ -365,7 +365,7 @@ Please redesign the street to encourage safe driving speeds and protect everyone
     variants: [
       {
         subject: "Hyde Park Avenue must be safe at every age and ability",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Hyde Park Avenue’s long and exposed crossings are especially difficult for older residents, disabled people, and anyone who needs more time to cross. [Share your own experience or that of someone you know.]
 
@@ -375,7 +375,7 @@ Please do not repave Hyde Park Avenue until those lasting safety improvements ar
       },
       {
         subject: "Give people enough time and protection to cross Hyde Park Avenue",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 The test of a safe crossing is not whether the fastest person can make it. It is whether an older adult, a disabled neighbor, or someone using a mobility aid can cross without being stranded or rushed.
 
@@ -385,7 +385,7 @@ Please build accessibility into the street itself before repaving—not as a pro
       },
       {
         subject: "Accessibility cannot be postponed on Hyde Park Avenue",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Residents who move more slowly cannot simply adapt to fast traffic and long crossings. [Describe an accessibility concern, destination, or person affected.]
 
@@ -395,7 +395,7 @@ Please restore permanent crossing protections and calm traffic before the City r
       },
       {
         subject: "Design Hyde Park Avenue for the people who need protection most",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Street safety should be measured from the perspective of the person most at risk—not the convenience of the fastest driver. On Hyde Park Avenue, [share an experience involving age, disability, vision, hearing, balance, or mobility].
 
@@ -405,7 +405,7 @@ Please revise the project around universal access: shorter crossings, slower tra
       },
       {
         subject: "A smoother Hyde Park Avenue is still a barrier without safe crossings",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 New pavement may improve the road surface, but it does not remove the barrier Hyde Park Avenue creates for people who cannot cross quickly. [Describe how this affects you, your family, or a neighbor.]
 
@@ -421,7 +421,7 @@ Please make accessibility and pedestrian protection part of the construction hap
     variants: [
       {
         subject: "My close call shows why Hyde Park Avenue cannot wait",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 I had—or witnessed—a close call on Hyde Park Avenue. [Describe what happened, where it happened, and how it affected you.]
 
@@ -431,7 +431,7 @@ Please pause the current plan and make lasting safety improvements before puttin
       },
       {
         subject: "Hyde Park Avenue should not require another crash before action",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 At [location], [describe your close call or one you witnessed]. The difference between that moment and a serious injury was luck—not a street designed to keep people safe.
 
@@ -441,7 +441,7 @@ Please act on the evidence now. Redesign Hyde Park Avenue for slower traffic and
       },
       {
         subject: "A dangerous moment on Hyde Park Avenue changed how I travel",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 After [briefly describe what happened], I changed the way I use Hyde Park Avenue. [Explain whether you avoid a crossing, change routes, drive instead, or feel less safe.]
 
@@ -451,7 +451,7 @@ Please include permanent traffic calming and pedestrian protection in the projec
       },
       {
         subject: "Do not pave over the warning signs on Hyde Park Avenue",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Close calls are warning signs. Mine happened when [describe the event and location]. It revealed exactly the problems residents have documented: excessive speed, too many conflict points, and too little protection.
 
@@ -461,7 +461,7 @@ Please revise the design and make the needed safety changes first.`,
       },
       {
         subject: "Turn Hyde Park Avenue close calls into real safety action",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 I am sharing a real experience because the risks on Hyde Park Avenue can sound abstract until they happen to someone: [tell your story].
 
@@ -477,7 +477,7 @@ Please use both. Do not repave Hyde Park Avenue until the project addresses the 
     variants: [
       {
         subject: "A safer Hyde Park Avenue will support Forest Hills businesses",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 I own, work at, or regularly visit businesses near Hyde Park Avenue. [Describe your connection to the corridor.]
 
@@ -487,7 +487,7 @@ Please do not repave these blocks until the City has included permanent safety i
       },
       {
         subject: "Hyde Park Avenue businesses need a street people can reach safely",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Local businesses depend on people being able to cross the street, walk from transit, bike from nearby homes, and park without navigating chaos. At [business or location], [describe what customers or workers experience].
 
@@ -497,7 +497,7 @@ Please use the resurfacing project to strengthen the Forest Hills business distr
       },
       {
         subject: "Do not let unsafe traffic define Hyde Park Avenue’s business district",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Hyde Park Avenue should function as a neighborhood main street, not simply a route for fast through-traffic. I see the difference when [share your experience as a customer, owner, or worker].
 
@@ -507,7 +507,7 @@ Please calm traffic and improve pedestrian access before repaving so the street 
       },
       {
         subject: "Invest in a safer Hyde Park Avenue commercial corridor",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Repaving is a public investment. On Hyde Park Avenue, that investment should deliver more than a smoother driving surface—it should create a safer, more welcoming commercial corridor.
 
@@ -517,7 +517,7 @@ Please revise the project so this fall’s work supports the long-term vitality 
       },
       {
         subject: "The safer Hyde Park Avenue option had business support",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Many local businesses joined hundreds of residents in supporting the three-lane alternative presented in 2025. That support reflected a simple truth: a safer, calmer street is good for a neighborhood business district.
 
@@ -533,7 +533,7 @@ Please reconsider the supported alternative and include lasting safety measures 
     variants: [
       {
         subject: "Hyde Park Avenue: seven years of engagement cannot end in paint",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 After seven years of studies and public meetings, residents deserve more than three blocks of asphalt and paint. The City developed stronger alternatives—including a three-lane plan supported by 700 residents and many local businesses—but now refuses even to acknowledge those proposals.
 
@@ -541,7 +541,7 @@ That is not meaningful public engagement, and new asphalt is not a safety plan. 
       },
       {
         subject: "Explain why Boston abandoned the safer Hyde Park Avenue plan",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 In May 2025, the City presented a three-lane Hyde Park Avenue option with permanent pedestrian protection and room for bicycle lanes. Hundreds of residents and many businesses supported it. Then the proposal disappeared.
 
@@ -551,7 +551,7 @@ Please answer those questions and pause repaving until a credible safety design 
       },
       {
         subject: "Do not call the Hyde Park Avenue process public engagement",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Residents attended open houses where no designs were shown, participated in surveys and safety walks, signed letters, and testified at a City Council hearing. The consistent request was for real safety improvements.
 
@@ -561,7 +561,7 @@ Please do not repave Hyde Park Avenue until the City responds publicly to the co
       },
       {
         subject: "Boston made promises on Hyde Park Avenue—now deliver",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 For years, Boston described Hyde Park Avenue as a multimodal corridor project. Officials discussed bus priority, bicycle connections, safer crossings, and immediate improvements. The current resurfacing plan delivers almost none of that.
 
@@ -571,7 +571,7 @@ Please honor the City’s commitments by incorporating lasting safety improvemen
       },
       {
         subject: "Hyde Park Avenue residents deserve an answer before repaving",
-        body: `Dear Mayor Wu and Streets Team,
+        body: `Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,
 
 Why is the City moving forward with a Hyde Park Avenue plan that no one asked for while ignoring alternatives developed through its own process?
 

@@ -86,6 +86,7 @@ h3 { margin:0; font:800 clamp(2.25rem,3.4vw,3.8rem)/1 Georgia,serif; letter-spac
 .letter-card select { width:100%; border:1px solid rgba(18,37,30,.38); background:white; color:var(--ink); padding:13px 42px 13px 14px; border-radius:2px; line-height:1.4; }
 .letter-card textarea { min-height:300px; resize:vertical; }
 .letter-card input:focus,.letter-card textarea:focus,.letter-card select:focus { outline:3px solid var(--safety); border-color:var(--ink); }
+.letter-encouragement { margin:-2px 0 11px; color:var(--ink-soft); font-size:.92rem; line-height:1.45; }
 .starter-box { margin:24px 0 2px; padding:18px; border:1px solid var(--line); background:var(--cream); }
 .starter-box label { margin:0 0 6px; }
 .starter-box p { margin:0 0 13px; color:var(--ink-soft); font-size:.95rem; line-height:1.45; }
@@ -99,6 +100,7 @@ h3 { margin:0; font:800 clamp(2.25rem,3.4vw,3.8rem)/1 Georgia,serif; letter-spac
 .send-button,.copy-button { min-height:54px; display:inline-flex; justify-content:center; align-items:center; padding:14px 20px; border-radius:3px; font-weight:800; cursor:pointer; }
 .send-button { flex:1; gap:18px; border:0; background:var(--red); color:white; text-decoration:none; }
 .send-button:hover { background:var(--red-dark); }
+.send-button:disabled { opacity:.42; cursor:not-allowed; background:var(--red); }
 .copy-button { border:1px solid var(--ink); background:transparent; color:var(--ink); }
 .copy-button:hover { background:var(--cream); }
 .copy-button:disabled { opacity:.42; cursor:not-allowed; background:transparent; }

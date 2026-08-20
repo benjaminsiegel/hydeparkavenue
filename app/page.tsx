@@ -120,6 +120,7 @@ const plans: Plan[] = [
 ];
 
 const defaultPlan = plans.find((plan) => plan.id === "current") ?? plans[0];
+const letterSalutation = "Dear Chief of Streets Osgood, Deputy Chief of Policy Robbins, and Mayor Wu,";
 
 const timelinePhases: TimelinePhase[] = [
   {
@@ -313,7 +314,8 @@ export default function Home() {
   const [activePlan, setActivePlan] = useState(defaultPlan);
   const [expanded, setExpanded] = useState(false);
   const [subject, setSubject] = useState(defaultSubjects[0]);
-  const [letter, setLetter] = useState("");
+  const [ownLetterSubject, setOwnLetterSubject] = useState(defaultSubjects[0]);
+  const [letter, setLetter] = useState(letterSalutation);
   const [starterId, setStarterId] = useState("");
   const [variantSelections, setVariantSelections] = useState<Record<string, number>>({});
   const [senderName, setSenderName] = useState("");
@@ -378,6 +380,7 @@ export default function Home() {
 
     setVariantSelections(selections);
     setSubject(defaultSubjects[subjectIndex]);
+    setOwnLetterSubject(defaultSubjects[subjectIndex]);
   }, []);
 
   useEffect(() => {
@@ -410,6 +413,11 @@ export default function Home() {
 
   const chooseStarter = (id: string) => {
     setStarterId(id);
+    if (!id) {
+      setLetter(letterSalutation);
+      setSubject(ownLetterSubject);
+      return;
+    }
     const category = letterCategories.find((item) => item.id === id);
     if (!category) return;
     const variant = category.variants[variantSelections[id] ?? 0];
@@ -423,6 +431,7 @@ export default function Home() {
     zipCode.trim() && `ZIP code: ${zipCode.trim()}${publicationConsent ? " *" : ""}`,
   ].filter(Boolean).join("\n");
   const emailBody = [letter.trim(), signature].filter(Boolean).join("\n\n");
+  const hasMessage = letter.trim().length > letterSalutation.length;
 
   const copyLetter = async (event: React.MouseEvent<HTMLButtonElement>) => {
     if (!event.currentTarget.form?.reportValidity()) return;
@@ -563,19 +572,8 @@ export default function Home() {
           <label htmlFor="subject">Subject</label>
           <input id="subject" value={subject} onChange={(event) => setSubject(event.target.value)} />
 
-          <div className="starter-box">
-            <label htmlFor="starter">Want a head start?</label>
-            <p>Choose a starting point and write more about your own experiences so the letter is yours.</p>
-            <select id="starter" value={starterId} onChange={(event) => chooseStarter(event.target.value)}>
-              <option value="">Choose a letter to adapt (optional)</option>
-              {letterCategories.map((category) => (
-                <option key={category.id} value={category.id}>{category.label}</option>
-              ))}
-            </select>
-            <small>Choosing another starting point will replace the message below.</small>
-          </div>
-
-          <label htmlFor="letter">Write your message</label>
+          <label htmlFor="letter">Write your own message</label>
+          <p className="letter-encouragement">Your own experience will make the strongest case. Tell City leaders what happens here and what a safer street would change for you.</p>
           <textarea
             id="letter"
             rows={14}
@@ -583,6 +581,18 @@ export default function Home() {
             placeholder="Start with your own experience. What happens when you use Hyde Park Avenue? Have you had a close call? What would a safer design change for you, your family, or your neighbors?"
             onChange={(event) => setLetter(event.target.value)}
           />
+
+          <div className="starter-box">
+            <label htmlFor="starter">Need help getting started?</label>
+            <p>If you’re stuck, choose a perspective below and adapt the letter it gives you.</p>
+            <select id="starter" value={starterId} onChange={(event) => chooseStarter(event.target.value)}>
+              <option value="">Write my own letter</option>
+              {letterCategories.map((category) => (
+                <option key={category.id} value={category.id}>{category.label}</option>
+              ))}
+            </select>
+            <small>Choosing a starting point will replace the message above.</small>
+          </div>
 
           <div className="sender-fields">
             <div>
@@ -635,8 +645,8 @@ export default function Home() {
           </label>
 
           <div className="letter-actions">
-            <button className="send-button" type="submit">Open draft in my email <span aria-hidden="true">→</span></button>
-            <button className="copy-button" type="button" onClick={copyLetter} disabled={!letter.trim()}>{copied ? "Copied" : "Copy message"}</button>
+            <button className="send-button" type="submit" disabled={!hasMessage}>Open draft in my email <span aria-hidden="true">→</span></button>
+            <button className="copy-button" type="button" onClick={copyLetter} disabled={!hasMessage}>{copied ? "Copied" : "Copy message"}</button>
           </div>
         </form>
       </section>
