@@ -432,8 +432,11 @@ export default function Home() {
   ].filter(Boolean).join("\n");
   const emailBody = [letter.trim(), signature].filter(Boolean).join("\n\n");
   const hasMessage = letter.trim().length > letterSalutation.length;
+  const hasSquareBracket = letter.includes("[") || letter.includes("]");
+  const canSend = hasMessage && !hasSquareBracket;
 
   const copyLetter = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (!canSend) return;
     if (!event.currentTarget.form?.reportValidity()) return;
     await navigator.clipboard.writeText(`Subject: ${subject}\n\n${emailBody}`);
     setCopied(true);
@@ -442,6 +445,7 @@ export default function Home() {
 
   const openEmailDraft = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!canSend) return;
     window.location.href = mailto;
   };
 
@@ -573,14 +577,20 @@ export default function Home() {
           <input id="subject" value={subject} onChange={(event) => setSubject(event.target.value)} />
 
           <label htmlFor="letter">Write your own message</label>
-          <p className="letter-encouragement">Your own experience will make the strongest case. Tell City leaders what happens here and what a safer street would change for you.</p>
+          <p className="letter-encouragement" id="letter-encouragement">Your own experience will make the strongest case. Tell City leaders what happens here and what a safer street would change for you.</p>
           <textarea
             id="letter"
             rows={14}
             value={letter}
+            aria-describedby={hasSquareBracket ? "letter-encouragement customization-reminder" : "letter-encouragement"}
             placeholder="Start with your own experience. What happens when you use Hyde Park Avenue? Have you had a close call? What would a safer design change for you, your family, or your neighbors?"
             onChange={(event) => setLetter(event.target.value)}
           />
+          {hasSquareBracket && (
+            <p className="customization-reminder" id="customization-reminder" role="alert">
+              Before you can continue, replace or remove every note in [square brackets] with your own words.
+            </p>
+          )}
 
           <div className="starter-box">
             <label htmlFor="starter">Need help getting started?</label>
@@ -645,8 +655,8 @@ export default function Home() {
           </label>
 
           <div className="letter-actions">
-            <button className="send-button" type="submit" disabled={!hasMessage}>Open draft in my email <span aria-hidden="true">→</span></button>
-            <button className="copy-button" type="button" onClick={copyLetter} disabled={!hasMessage}>{copied ? "Copied" : "Copy message"}</button>
+            <button className="send-button" type="submit" disabled={!canSend}>Open draft in my email <span aria-hidden="true">→</span></button>
+            <button className="copy-button" type="button" onClick={copyLetter} disabled={!canSend}>{copied ? "Copied" : "Copy message"}</button>
           </div>
         </form>
       </section>
