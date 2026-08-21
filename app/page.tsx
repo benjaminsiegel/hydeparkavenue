@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { defaultSubjects, letterCategories } from "./letter-templates";
+import { defaultSubjects } from "./letter-templates";
 
 type Plan = {
   id: string;
@@ -314,20 +314,17 @@ export default function Home() {
   const [activePlan, setActivePlan] = useState(defaultPlan);
   const [expanded, setExpanded] = useState(false);
   const [subject, setSubject] = useState(defaultSubjects[0]);
-  const [ownLetterSubject, setOwnLetterSubject] = useState(defaultSubjects[0]);
   const [letter, setLetter] = useState(letterSalutation);
-  const [starterId, setStarterId] = useState("");
-  const [variantSelections, setVariantSelections] = useState<Record<string, number>>({});
   const [senderName, setSenderName] = useState("");
   const [street, setStreet] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [publicationConsent, setPublicationConsent] = useState(false);
   const [copied, setCopied] = useState(false);
-  const didRandomizeLetters = useRef(false);
+  const didRandomizeSubject = useRef(false);
 
   useEffect(() => {
-    if (didRandomizeLetters.current) return;
-    didRandomizeLetters.current = true;
+    if (didRandomizeSubject.current) return;
+    didRandomizeSubject.current = true;
 
     const randomIndex = (length: number) => {
       if (length <= 1) return 0;
@@ -344,26 +341,6 @@ export default function Home() {
       return candidate >= previous ? candidate + 1 : candidate;
     };
 
-    const selections: Record<string, number> = {};
-
-    for (const category of letterCategories) {
-      const storageKey = `hpa-action:letter:${category.id}`;
-      let previous: number | null = null;
-      try {
-        const stored = window.localStorage.getItem(storageKey);
-        previous = stored === null ? null : Number(stored);
-      } catch {
-        previous = null;
-      }
-      const selected = differentIndex(category.variants.length, previous);
-      selections[category.id] = selected;
-      try {
-        window.localStorage.setItem(storageKey, String(selected));
-      } catch {
-        // The randomized version still works when browser storage is unavailable.
-      }
-    }
-
     let previousSubject: number | null = null;
     try {
       const stored = window.localStorage.getItem("hpa-action:subject");
@@ -378,9 +355,7 @@ export default function Home() {
       // The randomized subject still works when browser storage is unavailable.
     }
 
-    setVariantSelections(selections);
     setSubject(defaultSubjects[subjectIndex]);
-    setOwnLetterSubject(defaultSubjects[subjectIndex]);
   }, []);
 
   useEffect(() => {
@@ -411,20 +386,6 @@ export default function Home() {
     requestAnimationFrame(() => document.getElementById(`tab-${next.id}`)?.focus());
   };
 
-  const chooseStarter = (id: string) => {
-    setStarterId(id);
-    if (!id) {
-      setLetter(letterSalutation);
-      setSubject(ownLetterSubject);
-      return;
-    }
-    const category = letterCategories.find((item) => item.id === id);
-    if (!category) return;
-    const variant = category.variants[variantSelections[id] ?? 0];
-    setLetter(variant.body);
-    setSubject(variant.subject);
-  };
-
   const signature = [
     senderName.trim(),
     street.trim(),
@@ -432,11 +393,9 @@ export default function Home() {
   ].filter(Boolean).join("\n");
   const emailBody = [letter.trim(), signature].filter(Boolean).join("\n\n");
   const hasMessage = letter.trim().length > letterSalutation.length;
-  const hasSquareBracket = letter.includes("[") || letter.includes("]");
-  const canSend = hasMessage && !hasSquareBracket;
 
   const copyLetter = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (!canSend) return;
+    if (!hasMessage) return;
     if (!event.currentTarget.form?.reportValidity()) return;
     await navigator.clipboard.writeText(`Subject: ${subject}\n\n${emailBody}`);
     setCopied(true);
@@ -445,7 +404,7 @@ export default function Home() {
 
   const openEmailDraft = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!canSend) return;
+    if (!hasMessage) return;
     window.location.href = mailto;
   };
 
@@ -582,27 +541,10 @@ export default function Home() {
             id="letter"
             rows={14}
             value={letter}
-            aria-describedby={hasSquareBracket ? "letter-encouragement customization-reminder" : "letter-encouragement"}
+            aria-describedby="letter-encouragement"
             placeholder="Start with your own experience. What happens when you use Hyde Park Avenue? Have you had a close call? What would a safer design change for you, your family, or your neighbors?"
             onChange={(event) => setLetter(event.target.value)}
           />
-          {hasSquareBracket && (
-            <p className="customization-reminder" id="customization-reminder" role="alert">
-              Before you can continue, replace or remove every note in [square brackets] with your own words.
-            </p>
-          )}
-
-          <div className="starter-box">
-            <label htmlFor="starter">Need help getting started?</label>
-            <p>If you’re stuck, choose a perspective below and adapt the letter it gives you.</p>
-            <select id="starter" value={starterId} onChange={(event) => chooseStarter(event.target.value)}>
-              <option value="">Write my own letter</option>
-              {letterCategories.map((category) => (
-                <option key={category.id} value={category.id}>{category.label}</option>
-              ))}
-            </select>
-            <small>Choosing a starting point will replace the message above.</small>
-          </div>
 
           <div className="sender-fields">
             <div>
@@ -655,8 +597,8 @@ export default function Home() {
           </label>
 
           <div className="letter-actions">
-            <button className="send-button" type="submit" disabled={!canSend}>Open draft in my email <span aria-hidden="true">→</span></button>
-            <button className="copy-button" type="button" onClick={copyLetter} disabled={!canSend}>{copied ? "Copied" : "Copy message"}</button>
+            <button className="send-button" type="submit" disabled={!hasMessage}>Open draft in my email <span aria-hidden="true">→</span></button>
+            <button className="copy-button" type="button" onClick={copyLetter} disabled={!hasMessage}>{copied ? "Copied" : "Copy message"}</button>
           </div>
         </form>
       </section>
