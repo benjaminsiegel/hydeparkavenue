@@ -449,7 +449,9 @@ export default function Home() {
   const [zipCode, setZipCode] = useState("");
   const [publicationConsent, setPublicationConsent] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [voiceScrollPosition, setVoiceScrollPosition] = useState<"start" | "middle" | "end">("start");
   const didRandomizeSubject = useRef(false);
+  const voicesScrollerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (didRandomizeSubject.current) return;
@@ -513,6 +515,20 @@ export default function Home() {
     const next = plans[(currentIndex + direction + plans.length) % plans.length];
     selectPlan(next);
     requestAnimationFrame(() => document.getElementById(`tab-${next.id}`)?.focus());
+  };
+
+  const scrollVoices = (direction: -1 | 1) => {
+    const scroller = voicesScrollerRef.current;
+    if (!scroller) return;
+    scroller.scrollBy({ left: direction * scroller.clientWidth * 0.9, behavior: "smooth" });
+  };
+
+  const updateVoiceScrollPosition = (event: React.UIEvent<HTMLDivElement>) => {
+    const scroller = event.currentTarget;
+    const remaining = scroller.scrollWidth - scroller.clientWidth - scroller.scrollLeft;
+    if (scroller.scrollLeft <= 4) setVoiceScrollPosition("start");
+    else if (remaining <= 4) setVoiceScrollPosition("end");
+    else setVoiceScrollPosition("middle");
   };
 
   const signature = [
@@ -647,7 +663,12 @@ export default function Home() {
             <a className="voices-cta" href="#write">Write to City leaders <span aria-hidden="true">→</span></a>
           </div>
         </div>
-        <div className="voices-grid" aria-label="Approved resident excerpts">
+        <div
+          className="voices-grid"
+          aria-label="Approved resident excerpts"
+          ref={voicesScrollerRef}
+          onScroll={updateVoiceScrollPosition}
+        >
           {residentVoices.map((voice) => (
             <figure className="voice-card" key={`${voice.name}-${voice.zip}-${voice.quote}`}>
               <blockquote>“{voice.quote}”</blockquote>
@@ -655,7 +676,17 @@ export default function Home() {
             </figure>
           ))}
         </div>
-        <p className="voices-scroll-hint">Scroll for more resident voices <span aria-hidden="true">→</span></p>
+        <div className="voices-navigation" aria-label="Resident voice navigation">
+          <p>{residentVoices.length} approved resident voices</p>
+          <div className="voices-buttons">
+            <button type="button" onClick={() => scrollVoices(-1)} disabled={voiceScrollPosition === "start"}>
+              <span aria-hidden="true">←</span> Previous
+            </button>
+            <button type="button" onClick={() => scrollVoices(1)} disabled={voiceScrollPosition === "end"}>
+              Next <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </div>
       </section>
 
       <section className="action-section" id="write">
