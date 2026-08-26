@@ -639,12 +639,15 @@ export default function Home() {
             <p className="section-kicker">In their own words</p>
             <h2 id="voices-heading">Why neighbors are writing</h2>
           </div>
-          <p>
-            Residents describe a street they avoid, endure, and fear. These
-            writers gave permission to share their words.
-          </p>
+          <div className="voices-heading-copy">
+            <p>
+              Residents describe a street they avoid, endure, and fear. These
+              writers gave permission to share their words.
+            </p>
+            <a className="voices-cta" href="#write">Write to City leaders <span aria-hidden="true">→</span></a>
+          </div>
         </div>
-        <div className="voices-grid">
+        <div className="voices-grid" aria-label="Approved resident excerpts">
           {residentVoices.map((voice) => (
             <figure className="voice-card" key={`${voice.name}-${voice.zip}-${voice.quote}`}>
               <blockquote>“{voice.quote}”</blockquote>
@@ -652,7 +655,7 @@ export default function Home() {
             </figure>
           ))}
         </div>
-        <a className="voices-cta" href="#write">Write to City leaders <span aria-hidden="true">→</span></a>
+        <p className="voices-scroll-hint">Scroll for more resident voices <span aria-hidden="true">→</span></p>
       </section>
 
       <section className="action-section" id="write">
