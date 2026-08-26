@@ -47,6 +47,135 @@ type TimelinePhase = {
   closingImage?: TimelineImage;
 };
 
+type ResidentVoice = {
+  name: string;
+  zip: string;
+  quote: string;
+};
+
+const residentVoices: ResidentVoice[] = [
+  {
+    name: "Mark M.",
+    zip: "02136",
+    quote: "Hyde Park Ave is far and away the worst stretch of road I travel on.",
+  },
+  {
+    name: "Suzanne G.",
+    zip: "02130",
+    quote: "I have stopped biking to work because it is so dangerous to get to the bike path.",
+  },
+  {
+    name: "Will O-M.",
+    zip: "02130",
+    quote: "When cycling I feel the need to go on the sidewalk because of the lack of bike lanes and recklessness of the drivers.",
+  },
+  {
+    name: "Matt R.",
+    zip: "02136",
+    quote: "The Hyde Park Ave side of the street is a terrible place to be a walker, pedestrian, bus rider, or even a driver. It is not a safe corridor!",
+  },
+  {
+    name: "Jack D.",
+    zip: "02131",
+    quote: "The best time and most cost-effective way to create safer streets is BEFORE and DURING repaving work, NOT afterwards.",
+  },
+  {
+    name: "Robyn O.",
+    zip: "02130",
+    quote: "I and so many other people I know are afraid to cycle in Boston. Hyde Park Avenue is a particularly challenging road.",
+  },
+  {
+    name: "Amandine A.",
+    zip: "02130",
+    quote: "There is no infrastructure that supports safe crossing, and cars feel free to speed up to an unreasonable extent due to the open plan design.",
+  },
+  {
+    name: "Linda B.",
+    zip: "02131",
+    quote: "I seriously feel it is a life-risking choice to ride my bike on that stretch of Hyde Park Ave.",
+  },
+  {
+    name: "Christopher C.",
+    zip: "02130",
+    quote: "Every day on my way to the station I see cars speeding, cars running red lights, cars blocking pedestrian lines of sight, and cars moving erratically.",
+  },
+  {
+    name: "Alysse",
+    zip: "02130",
+    quote: "I avoid going in the southwest direction on Hyde Park Ave because the crossings are not safe for a pedestrian.",
+  },
+  {
+    name: "Laura M.",
+    zip: "02130",
+    quote: "Sometimes I bike on the sidewalk because I fear for my life.",
+  },
+  {
+    name: "Raechel S.",
+    zip: "02130",
+    quote: "Please don’t just pave over this problem. We need a new commuting infrastructure first.",
+  },
+  {
+    name: "Lisa T.",
+    zip: "02130",
+    quote: "I am afraid to let my kids ride bikes to Forest Hills because of the speeding cars and curvature in the road.",
+  },
+  {
+    name: "June C.",
+    zip: "02130",
+    quote: "As a senior citizen who lives to walk Hyde Park Avenue is dangerous.",
+  },
+  {
+    name: "Molly P.",
+    zip: "02130",
+    quote: "I cross this road every day to get to work.",
+  },
+  {
+    name: "Andrea S.",
+    zip: "02131",
+    quote: "Please actually implement safer streets ideas for our biking community. I am tired of being so afraid.",
+  },
+  {
+    name: "Bonnie T.",
+    zip: "02130",
+    quote: "The safety of pedestrians near the bus turn-in is paramount.",
+  },
+  {
+    name: "Rosa H.",
+    zip: "02130",
+    quote: "Repaving without improvements will condemn our neighborhood to a dangerous street for years to come.",
+  },
+  {
+    name: "Jessica G.",
+    zip: "02130",
+    quote: "We currently only use the sidewalks in that area because it is not safe to use the road.",
+  },
+  {
+    name: "Molly M.",
+    zip: "02130",
+    quote: "I want to stay in this apartment for a long time and if these safety concerns aren’t addressed before repaving then that will affect my quality of life here significantly.",
+  },
+  {
+    name: "Mallika S.",
+    zip: "02131",
+    quote: "It functions as a literal highway with no space for cyclists and no crosswalks with signals for pedestrians.",
+  },
+  {
+    name: "Susan S.",
+    zip: "02131",
+    quote: "In every one of those modes, this stretch of Hyde Park Avenue is frightening.",
+  },
+  {
+    name: "Sandy B.",
+    zip: "02131",
+    quote: "Repaving alone risks increasing car speeds without protecting anyone.",
+  },
+  {
+    name: "Nancy R.",
+    zip: "02130",
+    quote: "I also regularly walk with my kids to Forest Hills T stop.",
+  },
+];
+
 const plans: Plan[] = [
   {
     id: "current",
@@ -413,6 +542,16 @@ export default function Home() {
 
   return (
     <main>
+      <aside className="campaign-banner" aria-label="Campaign participation">
+        <div className="campaign-banner-inner">
+          <p>
+            <strong><span className="campaign-count">103</span> letters sent</strong>
+            <span>to Chief Osgood, Deputy Chief Robbins, and Mayor Wu—and counting.</span>
+          </p>
+          <a href="#write">Add your voice <span aria-hidden="true">→</span></a>
+        </div>
+      </aside>
+
       <section className="hero" id="top">
         <img
           className="hero-image"
@@ -492,6 +631,28 @@ export default function Home() {
           </div>
         </article>
 
+      </section>
+
+      <section className="voices-section" aria-labelledby="voices-heading">
+        <div className="voices-heading">
+          <div>
+            <p className="section-kicker">In their own words</p>
+            <h2 id="voices-heading">Why neighbors are writing</h2>
+          </div>
+          <p>
+            Residents describe a street they avoid, endure, and fear. These
+            writers gave permission to share their words.
+          </p>
+        </div>
+        <div className="voices-grid">
+          {residentVoices.map((voice) => (
+            <figure className="voice-card" key={`${voice.name}-${voice.zip}-${voice.quote}`}>
+              <blockquote>“{voice.quote}”</blockquote>
+              <figcaption>{voice.name} <span aria-hidden="true">·</span> {voice.zip}</figcaption>
+            </figure>
+          ))}
+        </div>
+        <a className="voices-cta" href="#write">Write to City leaders <span aria-hidden="true">→</span></a>
       </section>
 
       <section className="action-section" id="write">

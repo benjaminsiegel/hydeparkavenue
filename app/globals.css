@@ -8,6 +8,13 @@ button,input,textarea { font:inherit; }
 button,a { -webkit-tap-highlight-color:transparent; }
 a { color:inherit; }
 ::selection { background:var(--safety); color:var(--ink); }
+.campaign-banner { position:relative; z-index:4; padding:14px 4vw; border-bottom:2px solid var(--ink); background:var(--safety); color:var(--ink); }
+.campaign-banner-inner { max-width:1380px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.campaign-banner p { margin:0; display:flex; flex-wrap:wrap; align-items:baseline; gap:7px 11px; font-size:1rem; line-height:1.35; }
+.campaign-banner strong { display:inline-flex; align-items:baseline; gap:8px; font:900 1.08rem/1 Arial,Helvetica,sans-serif; }
+.campaign-count { font:800 2.15rem/.8 Georgia,serif; letter-spacing:-.04em; }
+.campaign-banner a { flex:0 0 auto; display:inline-flex; align-items:center; gap:12px; min-height:42px; padding:9px 14px; border:2px solid var(--ink); border-radius:3px; font-weight:900; text-decoration:none; }
+.campaign-banner a:hover { background:var(--ink); color:white; }
 .hero { min-height:100vh; min-height:100svh; position:relative; display:flex; align-items:flex-end; overflow:hidden; color:white; }
 .hero-image,.hero-shade { position:absolute; inset:0; width:100%; height:100%; }
 .hero-image { object-fit:cover; object-position:center 58%; }
@@ -61,6 +68,16 @@ h3 { margin:0; font:800 clamp(2.25rem,3.4vw,3.8rem)/1 Georgia,serif; letter-spac
 .plan-points li { position:relative; padding:13px 0 13px 25px; border-bottom:1px solid var(--line); line-height:1.4; }
 .plan-points li::before { content:""; position:absolute; left:2px; top:1.15em; width:8px; height:8px; border-radius:50%; background:var(--ink); }
 .plan-verdict { margin:26px 0 0; padding:20px 0 0; border-top:2px solid var(--ink); font:700 1.05rem/1.48 Georgia,serif; }
+.voices-section { padding:84px 4vw 92px; background:var(--paper); }
+.voices-heading { max-width:1380px; margin:0 auto 38px; display:grid; grid-template-columns:1.12fr .88fr; gap:6vw; align-items:end; }
+.voices-heading>p { max-width:570px; margin:0 0 8px; color:var(--ink-soft); font:700 1.08rem/1.55 Georgia,serif; }
+.voices-grid { max-width:1380px; margin:0 auto; columns:3 310px; column-gap:14px; }
+.voice-card { position:relative; break-inside:avoid; margin:0 0 14px; padding:27px 25px 23px; border:1px solid var(--line); border-top:5px solid var(--red); background:var(--cream); }
+.voice-card::before { content:"“"; position:absolute; top:8px; right:17px; color:rgba(212,71,54,.19); font:800 4.8rem/1 Georgia,serif; }
+.voice-card blockquote { position:relative; z-index:1; margin:0; font:700 clamp(1.05rem,1.35vw,1.25rem)/1.46 Georgia,serif; }
+.voice-card figcaption { margin-top:20px; padding-top:14px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:.78rem; font-weight:900; letter-spacing:.07em; text-transform:uppercase; }
+.voices-cta { width:max-content; max-width:1380px; min-height:48px; margin:26px auto 0; padding:12px 17px; border:2px solid var(--ink); border-radius:3px; display:flex; align-items:center; gap:16px; font-weight:900; text-decoration:none; }
+.voices-cta:hover { background:var(--ink); color:white; }
 .action-section { display:grid; grid-template-columns:.72fr 1.28fr; gap:7vw; padding:78px 5vw 94px; background:var(--ink); color:white; align-items:start; }
 .light-kicker { color:var(--safety); }
 .action-intro { position:sticky; top:42px; }
@@ -141,6 +158,8 @@ h3 { margin:0; font:800 clamp(2.25rem,3.4vw,3.8rem)/1 Georgia,serif; letter-spac
   .plan-card { grid-template-columns:1fr; }
   .plan-visual-column { border-right:0; border-bottom:1px solid var(--line); }
   .plan-image-button { min-height:360px; }
+  .voices-heading { grid-template-columns:1fr; gap:22px; }
+  .voices-grid { columns:2 280px; }
   .action-section { grid-template-columns:1fr; }
   .action-intro { position:static; }
   .receipts-heading { grid-template-columns:1fr; gap:22px; }
@@ -149,6 +168,13 @@ h3 { margin:0; font:800 clamp(2.25rem,3.4vw,3.8rem)/1 Georgia,serif; letter-spac
 }
 @media (max-width:650px) {
   html { scroll-padding-top:10px; }
+  .campaign-banner { padding:14px 20px 16px; }
+  .campaign-banner-inner { align-items:stretch; flex-direction:column; gap:12px; }
+  .campaign-banner p { display:block; }
+  .campaign-banner strong,.campaign-banner p>span { display:block; }
+  .campaign-banner p>span { margin-top:5px; }
+  .campaign-count { font-size:2rem; }
+  .campaign-banner a { justify-content:space-between; }
   .hero { min-height:100svh; }
   .hero-copy { width:100%; padding:64px 20px 96px; }
   .hero-image { object-position:56% center; }
@@ -167,6 +193,12 @@ h3 { margin:0; font:800 clamp(2.25rem,3.4vw,3.8rem)/1 Georgia,serif; letter-spac
   .plan-details { padding:34px 24px 40px; }
   .plan-meta { flex-wrap:wrap; }
   h3 { font-size:2.5rem; }
+  .voices-section { padding:60px 20px 68px; }
+  .voices-heading { margin-bottom:27px; }
+  .voices-heading h2 { font-size:clamp(2.8rem,13vw,4.4rem); }
+  .voices-grid { columns:1; }
+  .voice-card { padding:24px 21px 21px; }
+  .voices-cta { width:100%; justify-content:space-between; }
   .action-section { padding:62px 20px 90px; gap:38px; }
   .action-intro h2 { font-size:3.2rem; }
   .writing-prompts { grid-template-columns:1fr; }
