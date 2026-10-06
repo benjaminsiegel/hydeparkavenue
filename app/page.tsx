@@ -504,58 +504,40 @@ export default function Home() {
           <img className="update-image" src="/hyde-park-avenue-october-2026.jpg" alt="Construction parking notices at Hyde Park Avenue and Weld Hill Street, with the Forest Hills clock tower behind them" width={2000} height={1500} fetchPriority="high" />
           <div className="update-shade" />
         </div>
-        <div className="update-topline">
-          <a className="neighborhood-name" href="#update">Forest Hills<span>Boston, Massachusetts</span></a>
-          <a className="update-archive-link" href="#archive">Campaign archive below <span aria-hidden="true">↓</span></a>
-        </div>
         <div className="update-body">
-          <div className="update-context">
-            <p className="update-status"><span aria-hidden="true">✓</span> October 2026 · A step forward</p>
-            <p className="update-photo-title">A safer street<br />starts with us.</p>
-            <p className="update-footnote">A first, long-overdue step.<br />Our work for a safer corridor continues.</p>
-            <p className="update-photo-caption">Hyde Park Avenue &amp; Weld Hill Street<br />Ready for construction</p>
-          </div>
           <article className="neighbor-letter">
-            <p className="section-kicker">An update from your neighbors · October 2026</p>
+            <p className="letter-date">October 6, 2026</p>
             <h1 id="letter-title">We organized. The City listened. Hyde Park Ave is getting safer.</h1>
             <p>Dear neighbors,</p>
-            <p>In response to <a href="#archive">your advocacy</a>, the City has significantly improved its plans for the repaving of Hyde Park Avenue from Forest Hills to Walk Hill Street. Milling was scheduled to begin the week of October 5, 2026.</p>
+            <p>In response to <a href="#archive">your advocacy</a>, the City has significantly improved its plans for the repaving of Hyde Park Avenue from Forest Hills to Walk Hill street, which starts tomorrow.</p>
             <p>For the past 18 months (or longer), hundreds of you have written emails, signed petitions, and attended community meetings. Most recently, you demanded that the City incorporate pedestrian safety into its scheduled repaving this fall.</p>
             <p className="letter-worked">It worked.</p>
-            <p>The City <a href={cityProjectLink} target="_blank" rel="noreferrer">has significantly expanded and improved the project</a>, including meaningful changes to the Ukraine Way intersection that so many of us cross on a daily basis.</p>
-            <p>We have two requests of you:</p>
+            <p>The City <a href={cityProjectLink} target="_blank" rel="noreferrer">has significantly expanded and improved the project</a>, including meaningful changes to the Ukraine Way intersection that so many of us cross on a daily basis. (See below for our summary of the highlights.)</p>
+            <p>We have two (2) requests of you:</p>
             <h2>Take 30 seconds to thank the City</h2>
             <p>We ask a lot of our elected officials and municipal staff. When they listen and make something better, we should say so.</p>
             <p>The link below opens an email addressed to the Mayor, City Councillors Pepen and Weber, State Representative Montaño, and the Streets Cabinet. Add a sentence of your own and hit send.</p>
-            <a className="letter-link-button" href={thankYouLink}>Thank the City for listening <span aria-hidden="true">↗</span></a>
+            <a className="letter-link-button" href={thankYouLink}>Thank the City for listening</a>
             <h2>Help us with the next round</h2>
             <p>This repaving is the first, long-overdue step. We’re already working with the City on what comes next, in 2027 and 2028, to address reckless driving, bus priority, and pedestrian and bike safety on the entire corridor.</p>
-            <p>Know a neighbor who wants a better, safer Hyde Park Avenue? Share this update and invite them to join us.</p>
-            <a className="letter-link-button secondary" href="https://www.bostonbetterstreets.org/join" target="_blank" rel="noreferrer">Join the Boston Better Streets Coalition <span aria-hidden="true">↗</span></a>
+            <p>Know a neighbor who wants a better, safer Hyde Park Avenue? Forward them this email and have them join us.</p>
+            <a className="letter-link-button secondary" href="https://www.bostonbetterstreets.org/join" target="_blank" rel="noreferrer">Join the Boston Better Streets Coalition</a>
             <p className="letter-signoff">Thank you for making this happen!<br /><strong>Caterina, and Boston Better Streets Coalition</strong></p>
             <div className="letter-improvements">
-              <p className="section-kicker">What changed</p>
-              <h2>A better repaving plan</h2>
+              <h2>Here’s what’s changed in the repaving plan:</h2>
               <ul>
-                <li><strong>A longer stretch.</strong> Repaving that was going to stop at Ukraine Way now extends to Walk Hill Street.</li>
-                <li><strong>Wider, more visible crossings.</strong> Crosswalks at Tower Street and Ukraine Way will widen from 10 to 15 feet, with concrete islands improving visibility and protecting crosswalk approaches.</li>
-                <li><strong>A safer Ukraine Way intersection.</strong> Updated signals will reduce pedestrian wait times, while revised lane markings help organize turning traffic.</li>
-                <li><strong>More work ahead.</strong> The City is developing additional corridor improvements for 2027 and 2028. Detailed engineering drawings will be posted on <a href={cityProjectLink} target="_blank" rel="noreferrer">the City’s project page</a>.</li>
+                <li>The City was going to repave Forest Hills Station ←→ Ukraine Way. They’ve now extended that all the way to Walk Hill Street.</li>
+                <li>They were going to repaint standard-size pedestrian crosswalks. They will now use wider and more visible crosswalks. And will add concrete buffers to further protect crosswalks at Ukraine Way.</li>
+                <li>They were going to leave the Ukraine Way intersection unchanged for now. Instead, they will improve on a 2025 proposal to calm traffic and make crossings safer.</li>
+                <li>Stay tuned for detailed engineering drawings on the City’s website.</li>
               </ul>
             </div>
-            <a className="letter-return" href="#archive">Explore the campaign archive below <span aria-hidden="true">↓</span></a>
           </article>
         </div>
       </section>
 
       <section className="archive-notice" id="archive" aria-labelledby="archive-heading">
-        <div className="archive-heading-copy">
-          <p className="archive-label">August–September 2026 · Email campaign closed</p>
-          <h2 id="archive-heading">Campaign archive</h2>
-          <p className="archive-description">You’re now entering the original “Don’t repave our street” campaign. The proposals, residents’ voices, and advocacy below are preserved as a historical record.</p>
-          <p className="archive-closed">The original email action is closed. These pages document the case we made before the City improved its plan.</p>
-        </div>
-        <span className="archive-arrow" aria-hidden="true">↓</span>
+        <h2 id="archive-heading">Campaign archive</h2>
       </section>
 
       <section className="hero" id="top">
@@ -583,7 +565,6 @@ export default function Home() {
       <section className="plans-section" id="plans">
         <div className="section-heading learn-heading">
           <div>
-            <p className="section-kicker">The case we made · August 2026</p>
             <h2>Paving over the problem—and calling it progress</h2>
           </div>
           <div className="learn-copy">
@@ -684,10 +665,8 @@ export default function Home() {
         <div className="action-intro">
           <p className="section-kicker light-kicker"><span className="retired-action-label">Take action</span> · Campaign closed</p>
           <h2>No repaving without safety improvements.</h2>
-          <p className="action-closed-note">This email campaign has ended. Neighbors’ advocacy helped secure a better repaving plan. The original request is kept here as part of the record.</p>
-          <a className="archive-update-button" href="#update">Read what we achieved <span aria-hidden="true">↑</span></a>
           <p className="action-deck">
-            Our request: tell City leaders what a safer Hyde Park Ave would mean for you and
+            Tell City leaders what a safer Hyde Park Ave would mean for you and
             your family—and to repave it only once they’ve taken our safety into
             account.
           </p>
