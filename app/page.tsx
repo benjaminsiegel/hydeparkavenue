@@ -516,7 +516,7 @@ export default function Home() {
             <p>We have two (2) requests of you:</p>
             <h2>1. Take 30 seconds to thank the City</h2>
             <p>We ask a lot of our elected officials and municipal staff. When they listen and make something better, we should say so.</p>
-            <p>The link below opens an email addressed to the Mayor, City Councillors Pepen and Weber, State Representative Montaño, and the Streets Cabinet. Add a sentence of your own and hit send.</p>
+            <p>The link below opens an email addressed to the Mayor, City Councillors Pepén and Weber, State Representative Montaño, and the Streets Cabinet. Add a sentence of your own and hit send.</p>
             <a className="letter-link-button" href={thankYouLink}>Thank the City for listening</a>
             <h2>2. Help us with the next round</h2>
             <p>This repaving is the first, long-overdue step. We’re already working with the City on what comes next, in 2027 and 2028, to address reckless driving, bus priority, and pedestrian and bike safety on the entire corridor.</p>
