@@ -511,14 +511,14 @@ export default function Home() {
             <p>Dear neighbors,</p>
             <p>In response to <a href="#archive">your advocacy</a>, the City has significantly improved its plans for the repaving of Hyde Park Avenue from Forest Hills to Walk Hill street, which starts tomorrow.</p>
             <p>For the past 18 months (or longer), hundreds of you have written emails, signed petitions, and attended community meetings. Most recently, you demanded that the City incorporate pedestrian safety into its scheduled repaving this fall.</p>
-            <p className="letter-worked">It worked.</p>
+            <p>It worked.</p>
             <p>The City <a href={cityProjectLink} target="_blank" rel="noreferrer">has significantly expanded and improved the project</a>, including meaningful changes to the Ukraine Way intersection that so many of us cross on a daily basis. (See below for our summary of the highlights.)</p>
             <p>We have two (2) requests of you:</p>
-            <h2>Take 30 seconds to thank the City</h2>
+            <h2>1. Take 30 seconds to thank the City</h2>
             <p>We ask a lot of our elected officials and municipal staff. When they listen and make something better, we should say so.</p>
             <p>The link below opens an email addressed to the Mayor, City Councillors Pepen and Weber, State Representative Montaño, and the Streets Cabinet. Add a sentence of your own and hit send.</p>
             <a className="letter-link-button" href={thankYouLink}>Thank the City for listening</a>
-            <h2>Help us with the next round</h2>
+            <h2>2. Help us with the next round</h2>
             <p>This repaving is the first, long-overdue step. We’re already working with the City on what comes next, in 2027 and 2028, to address reckless driving, bus priority, and pedestrian and bike safety on the entire corridor.</p>
             <p>Know a neighbor who wants a better, safer Hyde Park Avenue? Forward them this email and have them join us.</p>
             <a className="letter-link-button secondary" href="https://www.bostonbetterstreets.org/join" target="_blank" rel="noreferrer">Join the Boston Better Streets Coalition</a>
@@ -531,6 +531,11 @@ export default function Home() {
                 <li>They were going to leave the Ukraine Way intersection unchanged for now. Instead, they will improve on a 2025 proposal to calm traffic and make crossings safer.</li>
                 <li>Stay tuned for detailed engineering drawings on the City’s website.</li>
               </ul>
+              <figure className="ukraine-way-plan">
+                <img src="/ukraine-way-updated-plan.png" alt="Updated engineering drawing of the Hyde Park Avenue and Ukraine Way intersection, showing crosswalks, lane markings, and traffic signal equipment" width={1127} height={509} loading="lazy" decoding="async" />
+                <figcaption>Ukraine Way · updated plan</figcaption>
+              </figure>
+              <p className="city-update-link"><a href={cityProjectLink} target="_blank" rel="noreferrer">Read the City’s update on Hyde Park Avenue</a></p>
             </div>
           </article>
         </div>
