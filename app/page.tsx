@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { defaultSubjects } from "./letter-templates";
 
 type Plan = {
   id: string;
@@ -179,9 +178,9 @@ const residentVoices: ResidentVoice[] = [
 const plans: Plan[] = [
   {
     id: "current",
-    tab: "New plan",
+    tab: "August 2026",
     date: "August 2026",
-    label: "City’s current plan",
+    label: "Original repaving proposal",
     title: "Paint, signs, better sight lines for cars",
     image: "/plans/august-2026.webp",
     alt: "August 2026 City of Boston Hyde Park Avenue pavement marking and signage plan near Weld Hill, Woodlawn, and Tower Streets",
@@ -209,7 +208,7 @@ const plans: Plan[] = [
       "Concrete curb extensions and a pedestrian island",
       "A shorter crossing at Ukraine Way",
     ],
-    verdict: "Better than the current plan, but it leaves the street wide and does little for cyclists.",
+    verdict: "Better than the August 2026 proposal, but it leaves the street wide and does little for cyclists.",
   },
   {
     id: "three-lanes",
@@ -377,7 +376,7 @@ const timelinePhases: TimelinePhase[] = [
     ],
   },
   {
-    range: "May 2025–August 2026",
+    range: "May 2025–September 2026",
     title: "A safer plan—then retreat",
     entries: [
       {
@@ -429,65 +428,33 @@ const timelinePhases: TimelinePhase[] = [
       },
       {
         date: "August 2026",
-        title: "The final plan: paint and signs",
-        body: "The City’s current plan keeps four lanes and adds paint, signs, and better sight lines for drivers. It omits the earlier safety designs and makes no changes at Ukraine Way.",
+        title: "The August plan: paint and signs",
+        body: "The City’s August plan keeps four lanes and adds paint, signs, and better sight lines for drivers. It omits the earlier safety designs and makes no changes at Ukraine Way.",
         links: [
-          { label: "See the current plan", href: "/plans/august-2026.webp" },
+          { label: "See the August plan", href: "/plans/august-2026.webp" },
+        ],
+      },
+      {
+        date: "September 2026",
+        title: "Residents push for a better plan—and a path forward",
+        body: "Forest Hills residents and the Boston Better Streets Coalition engaged extensively with new Interim Chief of Streets Chris Osgood, advocating for stronger safety improvements in the repaving plan and a path to get the broader Hyde Park Avenue project back on track. That engagement helped secure an expanded plan and renewed work on the corridor’s next steps.",
+        links: [
+          { label: "Updated City project page", href: "https://www.boston.gov/departments/transportation/hyde-park-avenue-multimodal-corridor" },
         ],
       },
     ],
   },
 ];
 
+const thankYouLink = "mailto:mayor@boston.gov,michelle.wu@boston.gov,chris.osgood@boston.gov,tali.robbins@boston.gov,Anne.roach@boston.gov,Samantha.Montano@mahouse.gov,nathaniel.fink@boston.gov,amy.cording@boston.gov,benjamin.weber@boston.gov,bonnie.delaune@boston.gov,emily.sinsky@boston.gov,enrique.pepen@boston.gov,dianna.bronchuk@boston.gov,zavia.dickerson@boston.gov?bcc=bostonbetterstreets%40gmail.com&subject=From%20a%20resident%20%7C%20Thank%20you%20for%20taking%20action%20on%20Hyde%20Park%20Ave";
+const cityProjectLink = "https://www.boston.gov/departments/transportation/hyde-park-avenue-multimodal-corridor";
+
 export default function Home() {
   const [activePlan, setActivePlan] = useState(defaultPlan);
   const [expanded, setExpanded] = useState(false);
-  const [subject, setSubject] = useState(defaultSubjects[0]);
-  const [letter, setLetter] = useState(letterSalutation);
-  const [senderName, setSenderName] = useState("");
-  const [street, setStreet] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [publicationConsent, setPublicationConsent] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [voiceScrollPosition, setVoiceScrollPosition] = useState<"start" | "middle" | "end">("start");
-  const didRandomizeSubject = useRef(false);
+  const updateDialogRef = useRef<HTMLDialogElement>(null);
   const voicesScrollerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (didRandomizeSubject.current) return;
-    didRandomizeSubject.current = true;
-
-    const randomIndex = (length: number) => {
-      if (length <= 1) return 0;
-      if (globalThis.crypto?.getRandomValues) {
-        return globalThis.crypto.getRandomValues(new Uint32Array(1))[0] % length;
-      }
-      return Math.floor(Math.random() * length);
-    };
-
-    const differentIndex = (length: number, previous: number | null) => {
-      if (length <= 1) return 0;
-      if (previous === null || previous < 0 || previous >= length) return randomIndex(length);
-      const candidate = randomIndex(length - 1);
-      return candidate >= previous ? candidate + 1 : candidate;
-    };
-
-    let previousSubject: number | null = null;
-    try {
-      const stored = window.localStorage.getItem("hpa-action:subject");
-      previousSubject = stored === null ? null : Number(stored);
-    } catch {
-      previousSubject = null;
-    }
-    const subjectIndex = differentIndex(defaultSubjects.length, previousSubject);
-    try {
-      window.localStorage.setItem("hpa-action:subject", String(subjectIndex));
-    } catch {
-      // The randomized subject still works when browser storage is unavailable.
-    }
-
-    setSubject(defaultSubjects[subjectIndex]);
-  }, []);
 
   useEffect(() => {
     if (!expanded) return;
@@ -531,41 +498,37 @@ export default function Home() {
     else setVoiceScrollPosition("middle");
   };
 
-  const signature = [
-    senderName.trim(),
-    street.trim(),
-    zipCode.trim() && `ZIP code: ${zipCode.trim()}${publicationConsent ? " *" : ""}`,
-  ].filter(Boolean).join("\n");
-  const emailBody = [letter.trim(), signature].filter(Boolean).join("\n\n");
-  const hasMessage = letter.trim().length > letterSalutation.length;
-
-  const copyLetter = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (!hasMessage) return;
-    if (!event.currentTarget.form?.reportValidity()) return;
-    await navigator.clipboard.writeText(`Subject: ${subject}\n\n${emailBody}`);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
+  const openUpdate = () => {
+    updateDialogRef.current?.showModal();
+    document.body.style.overflow = "hidden";
   };
-
-  const openEmailDraft = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!hasMessage) return;
-    window.location.href = mailto;
-  };
-
-  const to = "chris.osgood@boston.gov,tali.robbins@boston.gov,mayor@boston.gov";
-  const mailto = `mailto:${to}?cc=${encodeURIComponent("benjamin.weber@boston.gov")}&bcc=${encodeURIComponent("bostonbetterstreets@gmail.com")}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
     <main>
-      <aside className="campaign-banner" aria-label="Campaign participation">
-        <div className="campaign-banner-inner">
-          <p>
-            <strong><span className="campaign-count">103</span> letters sent</strong>
-            <span>to Chief Osgood, Deputy Chief Robbins, and Mayor Wu—and counting.</span>
-          </p>
-          <a href="#write">Add your voice <span aria-hidden="true">→</span></a>
+      <section className="campaign-update" aria-labelledby="update-heading">
+        <img className="update-image" src="/hyde-park-avenue-october-2026.jpg" alt="Construction parking notices at Hyde Park Avenue and Weld Hill Street, with the Forest Hills clock tower behind them" width={2000} height={1500} fetchPriority="high" />
+        <div className="update-shade" />
+        <div className="update-topline">
+          <a className="neighborhood-name" href="#top">Forest Hills<span>Boston, Massachusetts</span></a>
+          <span className="update-date">Campaign update · October 2026</span>
         </div>
+        <div className="update-content">
+          <p className="update-status"><span aria-hidden="true">✓</span> A step forward for Hyde Park Avenue</p>
+          <h1 id="update-heading">We organized.<br />The City listened.</h1>
+          <p className="update-deck">Hyde Park Avenue is getting safer. Your advocacy helped bring meaningful pedestrian improvements into this fall’s repaving.</p>
+          <div className="update-actions">
+            <button className="button button-primary" type="button" onClick={openUpdate}>Read the letter to neighbors <span aria-hidden="true">↗</span></button>
+            <a className="update-archive-link" href="#top">Explore the campaign archive <span aria-hidden="true">↓</span></a>
+          </div>
+          <p className="update-footnote">A first, long-overdue step. Our work for a safer corridor continues.</p>
+        </div>
+        <p className="update-photo-caption">Hyde Park Avenue &amp; Weld Hill Street · Ready for construction</p>
+      </section>
+
+      <aside className="archive-notice" aria-label="Campaign archive">
+        <span className="archive-label">Campaign archive</span>
+        <p>The original campaign is preserved below. The email action is now closed.</p>
+        <button type="button" onClick={openUpdate}>See what changed <span aria-hidden="true">↗</span></button>
       </aside>
 
       <section className="hero" id="top">
@@ -576,8 +539,8 @@ export default function Home() {
         />
         <div className="hero-shade" />
         <div className="hero-copy">
-          <p className="eyebrow">Forest Hills residents are telling Mayor Wu’s Streets Team</p>
-          <h1>Don’t repave our street</h1>
+          <p className="eyebrow">The original campaign · August–September 2026</p>
+          <h2 className="archive-hero-title">Don’t repave our street</h2>
           <p className="hero-summary">
             The City of Boston is planning to repave three blocks of Hyde Park
             Avenue without even pretending to address speeding, reckless
@@ -585,7 +548,7 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#plans">Learn more</a>
-            <a className="button button-quiet" href="#write">Take action</a>
+            <a className="button button-quiet" href="#write">View the archived action</a>
           </div>
         </div>
       </section>
@@ -593,6 +556,7 @@ export default function Home() {
       <section className="plans-section" id="plans">
         <div className="section-heading learn-heading">
           <div>
+            <p className="section-kicker">The case we made · August 2026</p>
             <h2>Paving over the problem—and calling it progress</h2>
           </div>
           <div className="learn-copy">
@@ -605,7 +569,7 @@ export default function Home() {
             </p>
             <p>They won’t even acknowledge their own proposals to make the corridor safer.</p>
             <p className="learn-emphasis">New asphalt isn’t a safety plan. New asphalt is an invitation to drive faster.</p>
-            <a className="section-cta" href="#write">Take action <span aria-hidden="true">→</span></a>
+            <button className="section-cta" type="button" onClick={openUpdate}>Read the October update <span aria-hidden="true">↗</span></button>
           </div>
         </div>
 
@@ -653,14 +617,14 @@ export default function Home() {
         <div className="voices-heading">
           <div>
             <p className="section-kicker">In their own words</p>
-            <h2 id="voices-heading">Why neighbors are writing</h2>
+            <h2 id="voices-heading">Why neighbors wrote</h2>
           </div>
           <div className="voices-heading-copy">
             <p>
               Residents describe a street they avoid, endure, and fear. These
               writers gave permission to share their words.
             </p>
-            <a className="voices-cta" href="#write">Write to City leaders <span aria-hidden="true">→</span></a>
+            <a className="voices-cta" href="#write">View the archived action <span aria-hidden="true">↓</span></a>
           </div>
         </div>
         <div
@@ -691,10 +655,12 @@ export default function Home() {
 
       <section className="action-section" id="write">
         <div className="action-intro">
-          <p className="section-kicker light-kicker">Take action</p>
+          <p className="section-kicker light-kicker"><span className="retired-action-label">Take action</span> · Campaign closed</p>
           <h2>No repaving without safety improvements.</h2>
+          <p className="action-closed-note">This email campaign has ended. Neighbors’ advocacy helped secure a better repaving plan. The original request is kept here as part of the record.</p>
+          <button className="archive-update-button" type="button" onClick={openUpdate}>Read what we achieved <span aria-hidden="true">↗</span></button>
           <p className="action-deck">
-            Tell City leaders what a safer Hyde Park Ave would mean for you and
+            Our request: tell City leaders what a safer Hyde Park Ave would mean for you and
             your family—and to repave it only once they’ve taken our safety into
             account.
           </p>
@@ -705,10 +671,14 @@ export default function Home() {
             <li>Drivers running red lights at Ukraine Way</li>
             <li>A time you or someone you know had a close call here</li>
           </ul>
-          <a className="action-history-link" href="#receipts">See why residents are taking action <span aria-hidden="true">↓</span></a>
+          <a className="action-history-link" href="#receipts">See the campaign’s history <span aria-hidden="true">↓</span></a>
         </div>
 
-        <form className="letter-card" onSubmit={openEmailDraft}>
+        <div className="letter-card archived-letter-card">
+          <div className="closed-stamp"><span aria-hidden="true">×</span> Email action closed</div>
+          <p className="archived-form-note" id="archived-form-note">Preserved for the record. This form no longer accepts messages or opens email drafts.</p>
+          <fieldset disabled aria-describedby="archived-form-note">
+          <legend className="sr-only">Original campaign email form — closed</legend>
           <div className="letter-routing">
             <div className="route-row">
               <span className="route-label">To</span>
@@ -728,17 +698,16 @@ export default function Home() {
           </div>
 
           <label htmlFor="subject">Subject</label>
-          <input id="subject" value={subject} onChange={(event) => setSubject(event.target.value)} />
+          <input id="subject" value="Fix Hyde Park Avenue before you repave it" readOnly />
 
           <label htmlFor="letter">Write your own message</label>
           <p className="letter-encouragement" id="letter-encouragement">Your own experience will make the strongest case. Tell City leaders what happens here and what a safer street would change for you.</p>
           <textarea
             id="letter"
             rows={14}
-            value={letter}
+            value={letterSalutation} readOnly
             aria-describedby="letter-encouragement"
             placeholder="Start with your own experience. What happens when you use Hyde Park Avenue? Have you had a close call? What would a safer design change for you, your family, or your neighbors?"
-            onChange={(event) => setLetter(event.target.value)}
           />
 
           <div className="sender-fields">
@@ -748,8 +717,7 @@ export default function Home() {
                 id="sender-name"
                 autoComplete="name"
                 required
-                value={senderName}
-                onChange={(event) => setSenderName(event.target.value)}
+                value="" readOnly
               />
             </div>
             <div>
@@ -758,8 +726,7 @@ export default function Home() {
                 id="street"
                 autoComplete="street-address"
                 placeholder="e.g. Tower Street"
-                value={street}
-                onChange={(event) => setStreet(event.target.value)}
+                value="" readOnly
               />
             </div>
             <div>
@@ -772,8 +739,7 @@ export default function Home() {
                 pattern="[0-9]{5}(-[0-9]{4})?"
                 required
                 title="Enter a five-digit ZIP code, optionally followed by four more digits"
-                value={zipCode}
-                onChange={(event) => setZipCode(event.target.value)}
+                value="" readOnly
               />
             </div>
             <p>Your name, street (if provided), and ZIP code will be added to the bottom of the email.</p>
@@ -782,8 +748,7 @@ export default function Home() {
           <label className="publication-consent">
             <input
               type="checkbox"
-              checked={publicationConsent}
-              onChange={(event) => setPublicationConsent(event.target.checked)}
+              checked={false} readOnly
             />
             <span>
               Please help us amplify our message.
@@ -792,10 +757,11 @@ export default function Home() {
           </label>
 
           <div className="letter-actions">
-            <button className="send-button" type="submit" disabled={!hasMessage}>Open draft in my email <span aria-hidden="true">→</span></button>
-            <button className="copy-button" type="button" onClick={copyLetter} disabled={!hasMessage}>{copied ? "Copied" : "Copy message"}</button>
+            <button className="send-button" type="button" disabled>Open draft in my email <span aria-hidden="true">→</span></button>
+            <button className="copy-button" type="button" disabled>Copy message</button>
           </div>
-        </form>
+          </fieldset>
+        </div>
       </section>
 
       <section className="receipts-section" id="receipts">
@@ -807,7 +773,8 @@ export default function Home() {
           <p className="receipts-intro">
             The record starts long before 2019. But the pattern since then is
             unmistakable: studies, meetings, promises, and safer designs—then
-            delay, retreat, and a plan that leaves the danger in place.
+            delay, retreat, and a plan that left the danger in place. In September
+            2026, residents pushed again—and helped secure a better path forward.
           </p>
         </div>
 
@@ -888,6 +855,49 @@ export default function Home() {
           Coalition. For questions or media information, <a href="mailto:bostonbetterstreets@gmail.com">email here</a>.
         </p>
       </footer>
+
+      <dialog className="update-dialog" ref={updateDialogRef} aria-labelledby="letter-title" onClose={() => { document.body.style.overflow = ""; }}>
+        <div className="update-dialog-topbar">
+          <span>Forest Hills · Letter to neighbors</span>
+          <form method="dialog"><button type="submit" aria-label="Close letter to neighbors">Close <span aria-hidden="true">×</span></button></form>
+        </div>
+        <div className="update-dialog-layout">
+          <div className="letter-photo">
+            <img src="/hyde-park-avenue-october-2026.jpg" alt="Construction notices posted at Hyde Park Avenue and Weld Hill Street" width={2000} height={1500} loading="lazy" />
+            <div className="letter-photo-caption"><span>October 2026</span><p>A safer street<br />starts with us.</p></div>
+          </div>
+          <article className="neighbor-letter">
+            <p className="section-kicker">An update from your neighbors · October 2026</p>
+            <h2 id="letter-title">We organized. The City listened. Hyde Park Ave is getting safer.</h2>
+            <p>Dear neighbors,</p>
+            <p>In response to <a href="#top" onClick={() => updateDialogRef.current?.close()}>your advocacy</a>, the City has significantly improved its plans for the repaving of Hyde Park Avenue from Forest Hills to Walk Hill Street. Milling was scheduled to begin the week of October 5, 2026.</p>
+            <p>For the past 18 months (or longer), hundreds of you have written emails, signed petitions, and attended community meetings. Most recently, you demanded that the City incorporate pedestrian safety into its scheduled repaving this fall.</p>
+            <p className="letter-worked">It worked.</p>
+            <p>The City <a href={cityProjectLink} target="_blank" rel="noreferrer">has significantly expanded and improved the project</a>, including meaningful changes to the Ukraine Way intersection that so many of us cross on a daily basis.</p>
+            <p>We have two requests of you:</p>
+            <h3>Take 30 seconds to thank the City</h3>
+            <p>We ask a lot of our elected officials and municipal staff. When they listen and make something better, we should say so.</p>
+            <p>The link below opens an email addressed to the Mayor, City Councillors Pepen and Weber, State Representative Montaño, and the Streets Cabinet. Add a sentence of your own and hit send.</p>
+            <a className="letter-link-button" href={thankYouLink}>Thank the City for listening <span aria-hidden="true">↗</span></a>
+            <h3>Help us with the next round</h3>
+            <p>This repaving is the first, long-overdue step. We’re already working with the City on what comes next, in 2027 and 2028, to address reckless driving, bus priority, and pedestrian and bike safety on the entire corridor.</p>
+            <p>Know a neighbor who wants a better, safer Hyde Park Avenue? Share this update and invite them to join us.</p>
+            <a className="letter-link-button secondary" href="https://www.bostonbetterstreets.org/join" target="_blank" rel="noreferrer">Join the Boston Better Streets Coalition <span aria-hidden="true">↗</span></a>
+            <p className="letter-signoff">Thank you for making this happen!<br /><strong>Caterina, and Boston Better Streets Coalition</strong></p>
+            <div className="letter-improvements">
+              <p className="section-kicker">What changed</p>
+              <h3>A better repaving plan</h3>
+              <ul>
+                <li><strong>A longer stretch.</strong> Repaving that was going to stop at Ukraine Way now extends to Walk Hill Street.</li>
+                <li><strong>Wider, more visible crossings.</strong> Crosswalks at Tower Street and Ukraine Way will widen from 10 to 15 feet, with concrete islands improving visibility and protecting crosswalk approaches.</li>
+                <li><strong>A safer Ukraine Way intersection.</strong> Updated signals will reduce pedestrian wait times, while revised lane markings help organize turning traffic.</li>
+                <li><strong>More work ahead.</strong> The City is developing additional corridor improvements for 2027 and 2028. Detailed engineering drawings will be posted on <a href={cityProjectLink} target="_blank" rel="noreferrer">the City’s project page</a>.</li>
+              </ul>
+            </div>
+            <button className="letter-return" type="button" onClick={() => updateDialogRef.current?.close()}>Return to the campaign archive <span aria-hidden="true">↓</span></button>
+          </article>
+        </div>
+      </dialog>
 
       {expanded && (
         <div className="plan-modal" role="dialog" aria-modal="true" aria-label={`${activePlan.date} enlarged plan`}>

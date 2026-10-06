@@ -12,9 +12,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const socialTitle = "Hyde Park Avenue: No repaving without safety improvements";
-const socialDescription = "Compare Boston’s current resurfacing plan with safer alternatives and tell Mayor Wu’s Streets Team to do better.";
-const socialImage = "https://foresthills.boston/og-hyde-park-avenue.png";
+const socialTitle = "Hyde Park Avenue: We organized. The City listened.";
+const socialDescription = "Neighbors helped secure safety improvements in Hyde Park Avenue’s fall 2026 repaving. Read the update and explore the campaign archive.";
+const socialImage = "https://foresthills.boston/hyde-park-avenue-october-2026.jpg";
 
 export const metadata: Metadata = {
   title: socialTitle,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: socialTitle,
     description: socialDescription,
-    images: [{ url: socialImage, width: 1200, height: 630, alt: socialTitle }],
+    images: [{ url: socialImage, width: 2000, height: 1500, alt: socialTitle }],
     type: "website",
   },
   twitter: {

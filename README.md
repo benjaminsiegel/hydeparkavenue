@@ -1,6 +1,6 @@
 # Hyde Park Avenue Action
 
-A resident-led campaign site explaining Boston’s inadequate 2026 resurfacing plan for Hyde Park Avenue, comparing it with stronger earlier designs, and helping residents write directly to City leaders.
+A resident-led campaign archive documenting advocacy for safer repaving on Hyde Park Avenue, with an October 2026 outcome update and a letter to neighbors. The original email form is disabled; the update letter offers a separate thank-you email link.
 
 ## Public site
 
@@ -30,3 +30,7 @@ npm run build:pages
 ```
 
 The design rationale and content structure are documented in `DESIGN_BRIEF.md`.
+
+## Campaign archive
+
+The October 2026 update is built into `app/page.tsx`, using the resident photograph in `public/hyde-park-avenue-october-2026.jpg`. The letter is a saved snapshot of the supplied Google Doc, with an explicit construction date and design details checked against the City project page. It does not sync automatically with Google Docs. Edit the letter in the page source for future changes. The former campaign email action is preserved as a disabled fieldset with no draft or copy handlers.
