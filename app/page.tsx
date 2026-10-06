@@ -446,7 +446,7 @@ const timelinePhases: TimelinePhase[] = [
   },
 ];
 
-const thankYouLink = "mailto:mayor@boston.gov,michelle.wu@boston.gov,chris.osgood@boston.gov,tali.robbins@boston.gov,Anne.roach@boston.gov,Samantha.Montano@mahouse.gov,nathaniel.fink@boston.gov,amy.cording@boston.gov,benjamin.weber@boston.gov,bonnie.delaune@boston.gov,emily.sinsky@boston.gov,enrique.pepen@boston.gov,dianna.bronchuk@boston.gov,zavia.dickerson@boston.gov?bcc=bostonbetterstreets%40gmail.com&subject=From%20a%20resident%20%7C%20Thank%20you%20for%20taking%20action%20on%20Hyde%20Park%20Ave";
+const thankYouLink = "mailto:mayor@boston.gov,michelle.wu@boston.gov,chris.osgood@boston.gov,tali.robbins@boston.gov,Anne.roach@boston.gov,Samantha.Montano@mahouse.gov,nathaniel.fink@boston.gov,amy.cording@boston.gov,benjamin.weber@boston.gov,bonnie.delaune@boston.gov,emily.sinsky@boston.gov,enrique.pepen@boston.gov,dianna.bronchuk@boston.gov,zavia.dickerson@boston.gov?bcc=bostonbetterstreets%40gmail.com&subject=Thank%20you%20for%20taking%20action%20on%20Hyde%20Park%20Ave";
 const cityProjectLink = "https://www.boston.gov/departments/transportation/hyde-park-avenue-multimodal-corridor";
 
 export default function Home() {
@@ -522,7 +522,7 @@ export default function Home() {
             <p>This repaving is the first, long-overdue step. We’re already working with the City on what comes next, in 2027 and 2028, to address reckless driving, bus priority, and pedestrian and bike safety on the entire corridor.</p>
             <p>Know a neighbor who wants a better, safer Hyde Park Avenue? Forward them this email and have them join us.</p>
             <a className="letter-link-button secondary" href="https://www.bostonbetterstreets.org/join" target="_blank" rel="noreferrer">Join the Boston Better Streets Coalition</a>
-            <p className="letter-signoff">Thank you for making this happen!<br /><strong>Caterina, and Boston Better Streets Coalition</strong></p>
+            <p className="letter-signoff">Thank you for making this happen!<br /><strong>The Boston Better Streets Coalition</strong></p>
             <div className="letter-improvements">
               <h2>Here’s what’s changed in the repaving plan:</h2>
               <ul>
@@ -532,8 +532,8 @@ export default function Home() {
                 <li>Stay tuned for detailed engineering drawings on the City’s website.</li>
               </ul>
               <figure className="ukraine-way-plan">
-                <img src="/ukraine-way-updated-plan.png" alt="Updated engineering drawing of the Hyde Park Avenue and Ukraine Way intersection, showing crosswalks, lane markings, and traffic signal equipment" width={1127} height={509} loading="lazy" decoding="async" />
-                <figcaption>Ukraine Way · updated plan</figcaption>
+                <img src="/ukraine-way-updated-plan.png" alt="Design in progress for the Hyde Park Avenue and Ukraine Way intersection, showing crosswalks, lane markings, and traffic signal equipment" width={1127} height={509} loading="lazy" decoding="async" />
+                <figcaption>Ukraine Way · design in progress</figcaption>
               </figure>
               <p className="city-update-link"><a href={cityProjectLink} target="_blank" rel="noreferrer">Read the City’s update on Hyde Park Avenue</a></p>
             </div>
